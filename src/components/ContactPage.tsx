@@ -28,11 +28,10 @@ export default function ContactPage() {
         >
           <div className="relative mb-8">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-xl">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" 
-                alt="Maxwell Briggs" 
+              <img
+                src="/images/profil.png"
+                alt="Maxwell Briggs"
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
             </div>
             <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full animate-pulse"></div>

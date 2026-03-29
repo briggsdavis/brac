@@ -69,9 +69,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0">
-          <ParallaxImage 
-            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1920" 
-            alt="Brač Estate Hero" 
+          <ParallaxImage
+            src="/images/brachero.jpg"
+            alt="Brač Estate Hero"
             className="h-full"
             aspectRatio="aspect-auto"
           />
@@ -227,9 +227,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
 
         <div className="masonry-grid masonry-grid-2">
           <motion.div {...fadeIn} className="masonry-item">
-            <ParallaxImage 
-              src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1200" 
-              alt="Exterior" 
+            <ParallaxImage
+              src="/images/dolvillagetwo.jpg"
+              alt="Dol Village"
               aspectRatio="aspect-[4/5]"
             />
           </motion.div>
