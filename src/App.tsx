@@ -4,6 +4,7 @@ import GalleryPage from './components/GalleryPage';
 import LocationPage from './components/LocationPage';
 import OpportunityPage from './components/OpportunityPage';
 import ContactPage from './components/ContactPage';
+import SpecificationsPage from './components/SpecificationsPage';
 import ParallaxImage from './components/ParallaxImage';
 import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -42,6 +43,7 @@ export default function App() {
       case 'gallery': return <GalleryPage initialFilter={galleryFilter} />;
       case 'location': return <LocationPage />;
       case 'opportunity': return <OpportunityPage />;
+      case 'specifications': return <SpecificationsPage />;
       case 'contact': return <ContactPage />;
       default: return <Home onNavigateToGallery={navigateToGallery} />;
     }
@@ -239,6 +241,7 @@ function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
             <li><button onClick={() => onNavigate('gallery')} className="hover:text-black hover:translate-x-1 transition-all">Gallery</button></li>
             <li><button onClick={() => onNavigate('location')} className="hover:text-black hover:translate-x-1 transition-all">Location</button></li>
             <li><button onClick={() => onNavigate('opportunity')} className="hover:text-black hover:translate-x-1 transition-all">Opportunity</button></li>
+            <li><button onClick={() => onNavigate('specifications')} className="hover:text-black hover:translate-x-1 transition-all">Specifications</button></li>
             <li><button onClick={() => onNavigate('contact')} className="hover:text-black hover:translate-x-1 transition-all">Contact</button></li>
           </ul>
         </div>
