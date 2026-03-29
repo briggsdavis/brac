@@ -13,7 +13,7 @@ const OPPORTUNITIES = [
     strategy: "Each floor becomes a self-contained 1-bedroom apartment. The detached stone stable could be converted separately as a garden-level studio, providing a fourth rentable unit.",
     financialUpside: "Stone apartments in heritage villages on Brač typically rent for €150–€250 per night during peak season. The stable unit, if converted, would add further rental income independently of the main house.",
     target: "Investors looking for short-term rental income through Airbnb or Booking.com.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
+    image: "/images/multi.jpg"
   },
   {
     id: "capital-appreciation",
@@ -24,7 +24,7 @@ const OPPORTUNITIES = [
     strategy: "New construction is not permitted in Dol due to its protected village status. This restricts supply and supports resale values for renovated properties. A well-finished stone house in this location is difficult to replicate.",
     financialUpside: "Unrestored stone properties on Brač typically sell for €150,000–€250,000. Fully restored stone houses in the same area have sold for €600,000 to €1.2M depending on finish and views.",
     target: "Buyers looking to renovate and resell.",
-    image: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=1200"
+    image: "/images/renderfront.jpg"
   },
   {
     id: "digital-nomad",
@@ -35,7 +35,7 @@ const OPPORTUNITIES = [
     strategy: "One unit functions as a shared workspace with Starlink internet, while the other two operate as private accommodation. The stable could serve as an additional private room.",
     financialUpside: "Remote workers tend to book outside peak summer months (May, June, September, October), filling gaps in the rental calendar when short-stay tourist demand drops.",
     target: "Investors targeting the remote work market following Croatia's 2023 Schengen entry.",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1200"
+    image: "/images/revamp.jpg"
   },
   {
     id: "family-estate",
@@ -46,7 +46,7 @@ const OPPORTUNITIES = [
     strategy: "Keep the three floors open as a single residence — separate wings for guests, children, and the main bedroom. Convert the stone stable into a guest annexe or caretaker's quarters. A pool could be added in the lower garden.",
     lifestyleValue: "Quiet village setting with no new development permitted. 5 minutes from Postira and the ferry to Split.",
     target: "Families looking for a private summer or year-round home.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1200"
+    image: "/images/family.jpg"
   },
   {
     id: "retirement",
@@ -57,7 +57,7 @@ const OPPORTUNITIES = [
     strategy: "Use the ground floor as the main living space. Add underfloor heating for winter comfort. Use the upper floors and stable for visiting family or as hobby rooms.",
     lifestyleValue: "Dol has clean air, low traffic, and is close to local farms producing olive oil, wine, and lamb. It is a quieter alternative to the more tourist-heavy coastal towns.",
     target: "Retirees from Northern Europe or North America considering a permanent or seasonal move to the EU.",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200"
+    image: "/images/retirement.jpg"
   }
 ];
 
@@ -143,7 +143,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
           </motion.div>
           <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.3 }} className="overflow-hidden">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1200"
+              src="/images/potentialdol.jpg"
               alt="Stone Property Brač"
               aspectRatio="aspect-[4/5]"
             />
