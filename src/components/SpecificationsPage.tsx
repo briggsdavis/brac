@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, Wifi, Thermometer, ShieldCheck, Landmark, Ruler, MapPin } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench } from "lucide-react";
 
 const CAROUSEL_IMAGES = [
   { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600", alt: "Refurbished Interior Render" },
@@ -16,36 +16,28 @@ const CAROUSEL_IMAGES = [
 ];
 
 const SPECS = [
-  { icon: Ruler,      label: "Total Area",     value: "140 m²" },
-  { icon: Bed,        label: "Bedrooms",        value: "4" },
-  { icon: Bath,       label: "Bathrooms",       value: "1" },
-  { icon: Utensils,   label: "Kitchen",         value: "1 Full Kitchen" },
-  { icon: Sun,        label: "Terrace",         value: "Private Terrace" },
-  { icon: Trees,      label: "Gardens",         value: "Upper & Lower Garden" },
-  { icon: Waves,      label: "Sea View",        value: "Adriatic Sea View" },
-  { icon: Mountain,   label: "Mountain View",   value: "From the House" },
-  { icon: Car,        label: "Parking",         value: "Small Car Nearby" },
-  { icon: Maximize,   label: "Plot Size",       value: "~300 m² Total Plot" },
-  { icon: Landmark,   label: "Heritage Status", value: "18th-Century Protected" },
-  { icon: MapPin,     label: "Location",        value: "Dol, Brač, Croatia" },
-  { icon: Maximize,   label: "Stable",          value: "Detached, conversion potential" },
+  { icon: Ruler,      label: "Total Area",       value: "166 m²" },
+  { icon: Landmark,   label: "Year Built",       value: "1890" },
+  { icon: Bed,        label: "Bedrooms",         value: "4" },
+  { icon: Bath,       label: "Bathrooms",        value: "1" },
+  { icon: Utensils,   label: "Kitchen",          value: "1 Full Kitchen" },
+  { icon: Sun,        label: "Terrace",          value: "Private Terrace" },
+  { icon: Trees,      label: "Gardens",          value: "Upper & Lower Garden" },
+  { icon: Waves,      label: "Sea View",         value: "Adriatic Sea View" },
+  { icon: Mountain,   label: "Mountain View",    value: "From the House" },
+  { icon: Car,        label: "Parking",          value: "Small Car Nearby" },
+  { icon: Maximize,   label: "Plot Size",        value: "~300 m² Total Plot" },
+  { icon: ShieldCheck, label: "Construction",    value: "Solid Stone" },
+  { icon: MapPin,     label: "Marina",           value: "5 min to Postira" },
+  { icon: Wrench,     label: "Utility Room",     value: "Upper Garden Level" },
+  { icon: Trees,      label: "Mature Trees",     value: "Olive, Fig & Mulberry" },
+  { icon: Zap,        label: "Utilities",        value: "Electricity, Water & Internet" },
+  { icon: Droplets,   label: "Drainage",         value: "Septic Tank" },
+  { icon: Landmark,   label: "Heritage Status",  value: "19th-Century Protected" },
+  { icon: MapPin,     label: "Location",         value: "Dol, Brač, Croatia" },
+  { icon: Maximize,   label: "Stable",           value: "Detached, conversion potential" },
 ];
 
-const AMENITIES = [
-  { icon: Wifi,        label: "Starlink-Ready Infrastructure" },
-  { icon: Thermometer, label: "Underfloor Heating Potential" },
-  { icon: ShieldCheck, label: "Solid Stone Construction" },
-  { icon: Sun,         label: "South-Facing Aspect" },
-  { icon: Trees,       label: "Mature Olive & Fig Trees" },
-  { icon: Waves,       label: "Sea-View Garden Terrace" },
-  { icon: Mountain,    label: "Panoramic Mountain Views" },
-  { icon: Landmark,    label: "Historic Village Setting" },
-  { icon: Car,         label: "Road Access" },
-  { icon: MapPin,      label: "5 min to Postira Ferry Port" },
-  { icon: Bed,         label: "3-Unit Subdivision Potential" },
-  { icon: Maximize,    label: "Architectural Plans Available" },
-  { icon: Landmark,    label: "Detached Stone Stable Included" },
-];
 
 const FLOORS = [
   {
@@ -132,8 +124,8 @@ export default function SpecificationsPage() {
       {/* Brief Description */}
       <motion.div {...fadeIn} className="mb-20 max-w-3xl">
         <p className="text-lg text-neutral-600 leading-relaxed font-serif italic">
-          A historic stone property in Dol, Brač, originally built in the 18th century.
-          The main house covers 140 m² across three floors with four bedrooms, upper and lower gardens, a private terrace,
+          A historic stone property in Dol, Brač, constructed in 1890.
+          The main house covers 166 m² across three floors with four bedrooms, upper and lower gardens, a private terrace,
           and views of the mountains and sea. A detached stone stable is also included in the sale.
           Sold as a renovation project. Subdivision plans available on request.
         </p>
@@ -142,7 +134,7 @@ export default function SpecificationsPage() {
       {/* Image Carousel */}
       <motion.div {...fadeIn} className="mb-24">
         <div
-          className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-neutral-100 cursor-pointer group"
+          className="relative aspect-[16/9] overflow-hidden bg-neutral-100 cursor-pointer group"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onClick={() => setLightboxIndex(carouselIndex)}
@@ -233,28 +225,6 @@ export default function SpecificationsPage() {
         </div>
       </motion.div>
 
-      {/* Amenities */}
-      <motion.div {...fadeIn} className="mb-24 py-16 px-8 bg-neutral-50 rounded-3xl">
-        <div className="mb-10">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-3 block">What's Included</span>
-          <h3 className="text-3xl font-serif">Amenities & Features</h3>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {AMENITIES.map((item, i) => (
-            <motion.div
-              key={i}
-              {...fadeIn}
-              transition={{ ...fadeIn.transition, delay: i * 0.05 }}
-              className="flex items-center gap-4"
-            >
-              <div className="w-8 h-8 rounded-full bg-white border border-black/5 flex items-center justify-center flex-shrink-0">
-                <item.icon className="w-4 h-4 text-neutral-500" />
-              </div>
-              <span className="text-sm text-neutral-700">{item.label}</span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
 
       {/* Floor Descriptions */}
       <motion.div {...fadeIn} className="mb-24">
