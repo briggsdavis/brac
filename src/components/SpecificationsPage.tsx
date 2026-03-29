@@ -28,6 +28,7 @@ const SPECS = [
   { icon: Maximize,   label: "Plot Size",       value: "~300 m² Total Plot" },
   { icon: Landmark,   label: "Heritage Status", value: "18th-Century Protected" },
   { icon: MapPin,     label: "Location",        value: "Dol, Brač, Croatia" },
+  { icon: Maximize,   label: "Stable",          value: "Detached — 4th Unit Potential" },
 ];
 
 const AMENITIES = [
@@ -41,8 +42,9 @@ const AMENITIES = [
   { icon: Landmark,    label: "Historic Village Setting" },
   { icon: Car,         label: "Road Access" },
   { icon: MapPin,      label: "5 min to Postira Ferry Port" },
-  { icon: Bed,         label: "Multi-Unit Subdivision Ready" },
+  { icon: Bed,         label: "4-Unit Subdivision Potential" },
   { icon: Maximize,    label: "Architectural Plans Available" },
+  { icon: Landmark,    label: "Detached Stone Stable Included" },
 ];
 
 const FLOORS = [
@@ -72,6 +74,15 @@ const FLOORS = [
     image: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=900",
     alt: "Upper Floor Bedroom",
     rooms: ["Master bedroom suite", "Exposed timber roof beams", "Mezzanine studio/office", "Roof terrace access", "360° panoramic views", "Mountain & sea sightlines"],
+  },
+  {
+    number: "04",
+    label: "The Stable",
+    brief: "A detached stone stable with direct garden access — ready for conversion into a fourth independent unit.",
+    description: "Included in the sale is a detached original stone stable situated at garden level, separate from the main house. The structure retains its historic vaulted stone shell and offers a blank canvas for conversion into a compact self-contained apartment — potentially a studio or one-bedroom unit with its own private entrance directly from the lower garden. Given its independent position and garden frontage, the stable represents a genuinely unique fourth revenue stream: a boutique holiday let, a writer's studio, a caretaker's quarters, or a premium glamping-style retreat. No other property in Dol offers this level of subdivision potential within a single purchase.",
+    image: "https://images.unsplash.com/photo-1518005020250-675f04484825?auto=format&fit=crop&q=80&w=900",
+    alt: "Stone Stable Exterior",
+    rooms: ["Detached stone structure", "Vaulted original ceiling", "Private garden entrance", "Lower garden frontage", "Studio/1-bed conversion potential", "Fully independent from main house"],
   },
 ];
 
