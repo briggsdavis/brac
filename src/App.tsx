@@ -100,7 +100,7 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
             transition={{ delay: 1 }}
             className="max-w-sm text-[10px] sm:text-xs font-light tracking-wide opacity-80 mb-10"
           >
-            A rare investment opportunity in the heart of Dol. Four-unit potential including a detached stone stable, with panoramic Adriatic views.
+            A rare investment opportunity in the heart of Dol. Three-unit potential with panoramic Adriatic views, plus a detached stone stable with its own conversion potential.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -130,7 +130,7 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
           {[
             { label: 'Heritage', title: 'Historic Status', desc: 'Protected stone architecture dating back to the 18th century, meticulously preserved.' },
             { label: 'Proximity', title: '2.2km to Beach', desc: 'A short drive or scenic walk to the crystal clear waters of the Adriatic coast.' },
-            { label: 'Yield', title: '4-Unit Potential', desc: 'Three floors plus a detached stone stable — architectural plans ready for subdivision into four independent residences.' }
+            { label: 'Yield', title: '3-Unit Potential', desc: 'Architectural plans ready for subdivision into three independent luxury residences, with a detached stone stable offering additional conversion potential.' }
           ].map((spec, i) => (
             <motion.div 
               key={i}

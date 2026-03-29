@@ -6,11 +6,11 @@ const OPPORTUNITIES = [
   {
     id: "multi-unit",
     number: "01",
-    title: "The Four-Unit Yield",
+    title: "The Multi-Unit Yield",
     subtitle: "The Developer Play",
-    objective: "Renovate the existing structure into four standalone luxury units — three floors plus the detached stone stable.",
-    strategy: "Convert each floor into a private suite with independent entrances, and convert the detached stone stable into a compact garden apartment with its own private access from the lower garden.",
-    financialUpside: "Four independent units quadruple the occupancy potential. In Brač, luxury stone apartments in heritage villages like Dol rent for €150–€250 per night during peak season. The stable unit, positioned as a boutique garden retreat, can command a premium.",
+    objective: "Renovate the existing structure into three standalone luxury units.",
+    strategy: "Convert each floor into a private 1-bedroom suite with independent entrances. The detached stone stable offers additional potential to be converted into a compact garden apartment as a standalone bonus unit.",
+    financialUpside: "Triples the occupancy potential across the main house. In Brač, luxury stone apartments in heritage villages like Dol rent for €150–€250 per night during peak season. The stable, if converted, could command a further premium as a boutique garden retreat.",
     target: "Investors looking for high-yield short-term rental income through platforms like Airbnb and Booking.com.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
   },

@@ -42,7 +42,7 @@ const AMENITIES = [
   { icon: Landmark,    label: "Historic Village Setting" },
   { icon: Car,         label: "Road Access" },
   { icon: MapPin,      label: "5 min to Postira Ferry Port" },
-  { icon: Bed,         label: "4-Unit Subdivision Potential" },
+  { icon: Bed,         label: "3-Unit Subdivision Potential" },
   { icon: Maximize,    label: "Architectural Plans Available" },
   { icon: Landmark,    label: "Detached Stone Stable Included" },
 ];
