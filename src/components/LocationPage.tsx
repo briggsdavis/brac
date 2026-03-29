@@ -10,7 +10,7 @@ const LOCATION_DATA = [
     items: [
       {
         name: "Zlatni Rat (Bol)",
-        distance: "35 min",
+        distance: "55 min",
         feature: "A well-known pebble cape that shifts shape with the tides. One of the most visited beaches in Croatia.",
         maps: "https://maps.google.com/?q=Zlatni+Rat+Bol",
         image: "/images/bol.jpg"
@@ -40,14 +40,14 @@ const LOCATION_DATA = [
         distance: "5 min drive",
         feature: "The nearest coastal town. Has a weekly market, supermarket, medical centre, and ferry connection to Split on the mainland.",
         maps: "https://maps.google.com/?q=Postira+Brac",
-        image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80&w=800"
+        image: "/images/postira.jpg"
       },
       {
         name: "Supetar",
         distance: "15 min",
         feature: "The island's main town. Restaurants, bars, ATMs, and daily fast-ferry service to Split (50 min crossing).",
         maps: "https://maps.google.com/?q=Supetar+Brac",
-        image: "https://images.unsplash.com/photo-1514222139-b7830d1784b7?auto=format&fit=crop&q=80&w=800"
+        image: "/images/supetar.jpg"
       }
     ]
   },
@@ -60,7 +60,7 @@ const LOCATION_DATA = [
         distance: "45 min hike",
         feature: "A small stone chapel in the mountains above Dol. About 45 minutes on foot along old shepherd paths through pine and scrub. Good views over the island and towards the Adriatic from the top.",
         maps: "https://maps.google.com/?q=Dol+Brac+hiking",
-        image: "https://images.unsplash.com/photo-1544551763-47a0159c963f?auto=format&fit=crop&q=80&w=800"
+        image: "/images/mikail.jpg"
       },
       {
         name: "Blaca Hermitage",
@@ -94,7 +94,7 @@ const LOCATION_DATA = [
         distance: "40 min",
         feature: "Restaurant at the Blaca monastery site. Traditional food, remote setting, surrounded by olive groves.",
         maps: "https://maps.google.com/?q=Pustinja+Blaca",
-        image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=800"
+        image: "/images/desert.jpg"
       }
     ]
   },
@@ -225,7 +225,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
                     transition={{ ...fadeIn.transition, delay: i * 0.1 }}
                     className="group"
                   >
-                    <div className="mb-8 overflow-hidden rounded-sm">
+                    <div className="mb-8 overflow-hidden">
                       <ParallaxImage
                         src={item.image}
                         alt={item.name}
