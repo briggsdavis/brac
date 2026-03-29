@@ -28,7 +28,7 @@ const SPECS = [
   { icon: Maximize,   label: "Plot Size",       value: "~300 m² Total Plot" },
   { icon: Landmark,   label: "Heritage Status", value: "18th-Century Protected" },
   { icon: MapPin,     label: "Location",        value: "Dol, Brač, Croatia" },
-  { icon: Maximize,   label: "Stable",          value: "Detached — 4th Unit Potential" },
+  { icon: Maximize,   label: "Stable",          value: "Detached, conversion potential" },
 ];
 
 const AMENITIES = [
@@ -51,38 +51,38 @@ const FLOORS = [
   {
     number: "01",
     label: "Ground Floor",
-    brief: "The working heart of the estate — kitchen, dining, and utility.",
-    description: "The ground floor spans approximately 45 m² and forms the practical core of the home. It features a full kitchen with a stone hearth, a spacious open-plan dining and living area, one bedroom, and a utility room with direct access to the lower garden. Original vaulted stone ceilings have been preserved throughout, providing natural insulation and an unmatched aesthetic. The bathroom is also located on this level, making the ground floor fully self-contained — ideal as a standalone rental unit or primary living space.",
+    brief: "Kitchen, dining area, bathroom and direct access to the lower garden.",
+    description: "The ground floor covers approximately 45 m². It has a kitchen with a stone hearth, an open dining and living area, one bedroom, a bathroom, and a utility room. There is direct access to the lower garden from this level. The original vaulted stone ceilings are intact throughout, which helps with natural temperature regulation. The floor is self-contained and could function independently as a single unit.",
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=900",
     alt: "Ground Floor Kitchen",
-    rooms: ["Kitchen with stone hearth", "Open-plan dining & living", "1 Bedroom", "1 Bathroom", "Utility room", "Lower garden access"],
+    rooms: ["Kitchen with stone hearth", "Open dining and living area", "1 Bedroom", "1 Bathroom", "Utility room", "Lower garden access"],
   },
   {
     number: "02",
     label: "First Floor",
-    brief: "The social floor — generous living space and private terrace.",
-    description: "The first floor is the largest level at approximately 55 m², designed around a generous central living room that opens onto the private stone terrace. Two bedrooms sit on either side, both with views over the valley. The terrace — accessible via original arched double doors — faces south-west, capturing the afternoon sun and offering an unobstructed view toward the Adriatic. This level is ideal as a luxury rental unit or the main entertaining space of a private family estate.",
+    brief: "Central living room with access to the private stone terrace.",
+    description: "The first floor is the largest at approximately 55 m². A central living room opens onto the stone terrace via the original arched double doors. Two bedrooms sit either side, both with views over the valley. The terrace faces south-west and has an open view towards the Adriatic. This floor could be used as the main living level or as a separate unit.",
     image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=900",
     alt: "First Floor Living Room",
-    rooms: ["Open living room", "Private stone terrace", "2 Bedrooms", "SW valley & sea views", "Arched original doorways", "Natural stone flooring"],
+    rooms: ["Central living room", "Private stone terrace", "2 Bedrooms", "South-west valley and sea views", "Original arched doorways", "Stone flooring throughout"],
   },
   {
     number: "03",
-    label: "Upper Floor & Roof Terrace",
-    brief: "Panoramic retreat — the highest point with mountain and sea views.",
-    description: "The upper floor (~40 m²) is the most dramatic level of the estate. One large bedroom suite with exposed timber roof beams occupies the main space, while a second mezzanine-style room offers flexibility as a studio, office, or guest bedroom. A staircase leads directly to the flat roof terrace, which offers 360-degree views of the Dol valley, the Brač mountain ridge, and on clear days, a direct sightline to the Adriatic Sea. This level is best suited as a master suite or a premium short-stay rental unit commanding the highest nightly rate.",
+    label: "Upper Floor and Roof Terrace",
+    brief: "Top floor bedroom with roof terrace access and views over the valley and sea.",
+    description: "The upper floor is approximately 40 m². There is one main bedroom with exposed timber roof beams and a smaller secondary room that could work as a studio, office, or additional sleeping space. A staircase leads to the flat roof terrace, which has open views of the Dol valley, the mountains, and on clear days the Adriatic. This level works well as the top unit in a subdivision or as the main bedroom suite in a single-family arrangement.",
     image: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=900",
     alt: "Upper Floor Bedroom",
-    rooms: ["Master bedroom suite", "Exposed timber roof beams", "Mezzanine studio/office", "Roof terrace access", "360° panoramic views", "Mountain & sea sightlines"],
+    rooms: ["Main bedroom", "Exposed timber roof beams", "Secondary room / office", "Roof terrace access", "Valley and sea views", "Mountain views"],
   },
   {
     number: "04",
     label: "The Stable",
-    brief: "A detached stone stable with direct garden access — ready for conversion into a fourth independent unit.",
-    description: "Included in the sale is a detached original stone stable situated at garden level, separate from the main house. The structure retains its historic vaulted stone shell and offers a blank canvas for conversion into a compact self-contained apartment — potentially a studio or one-bedroom unit with its own private entrance directly from the lower garden. Given its independent position and garden frontage, the stable represents a genuinely unique fourth revenue stream: a boutique holiday let, a writer's studio, a caretaker's quarters, or a premium glamping-style retreat. No other property in Dol offers this level of subdivision potential within a single purchase.",
+    brief: "Detached stone stable with its own garden access. Potential for conversion into a self-contained unit.",
+    description: "Also included in the sale is a detached stone stable at garden level, separate from the main house. The original stone shell and vaulted ceiling are intact. The structure has its own entrance directly from the lower garden and is fully independent from the main building. It could be converted into a studio or one-bedroom apartment. Possible uses include a holiday let, home office, guest accommodation, or caretaker's quarters. Planning would be subject to local authority approval.",
     image: "https://images.unsplash.com/photo-1518005020250-675f04484825?auto=format&fit=crop&q=80&w=900",
     alt: "Stone Stable Exterior",
-    rooms: ["Detached stone structure", "Vaulted original ceiling", "Private garden entrance", "Lower garden frontage", "Studio/1-bed conversion potential", "Fully independent from main house"],
+    rooms: ["Detached stone structure", "Original vaulted ceiling", "Independent garden entrance", "Lower garden frontage", "Studio or 1-bed conversion potential", "Fully separate from main house"],
   },
 ];
 
@@ -132,10 +132,10 @@ export default function SpecificationsPage() {
       {/* Brief Description */}
       <motion.div {...fadeIn} className="mb-20 max-w-3xl">
         <p className="text-lg text-neutral-600 leading-relaxed font-serif italic">
-          A rare historic stone estate in Dol, one of Brač's oldest and most protected inland villages.
-          Originally built in the 18th century, the property offers 140 m² across three floors with four bedrooms,
-          upper and lower gardens, a private terrace, and panoramic views stretching from the Brač mountain ridge
-          to the Adriatic Sea. Sold as a renovation project with architectural subdivision plans available on request.
+          A historic stone property in Dol, Brač, originally built in the 18th century.
+          The main house covers 140 m² across three floors with four bedrooms, upper and lower gardens, a private terrace,
+          and views of the mountains and sea. A detached stone stable is also included in the sale.
+          Sold as a renovation project. Subdivision plans available on request.
         </p>
       </motion.div>
 
@@ -335,7 +335,7 @@ export default function SpecificationsPage() {
         <div>
           <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Technical Documents</p>
           <p className="font-serif text-2xl">Floor Plan</p>
-          <p className="text-sm text-neutral-500 mt-1">Architectural layout — PDF, A3 format</p>
+          <p className="text-sm text-neutral-500 mt-1">Architectural layout, PDF format</p>
         </div>
         <a
           href="https://wa.me/251944825058?text=Hi%2C%20I%27d%20like%20to%20request%20the%20floor%20plan%20for%20the%20Bra%C4%8D%20Estate."

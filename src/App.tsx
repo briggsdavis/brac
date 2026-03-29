@@ -128,9 +128,9 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
       <section id="specs" className="py-32 px-6 max-w-7xl mx-auto border-b border-black/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-20">
           {[
-            { label: 'Heritage', title: 'Historic Status', desc: 'Protected stone architecture dating back to the 18th century, meticulously preserved.' },
-            { label: 'Proximity', title: '2.2km to Beach', desc: 'A short drive or scenic walk to the crystal clear waters of the Adriatic coast.' },
-            { label: 'Yield', title: '3-Unit Potential', desc: 'Architectural plans ready for subdivision into three independent luxury residences, with a detached stone stable offering additional conversion potential.' }
+            { label: 'Heritage', title: 'Historic Status', desc: 'Stone construction dating back to the 18th century. Protected village status — no new development permitted in Dol.' },
+            { label: 'Proximity', title: '2.2km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
+            { label: 'Yield', title: '3-Unit Potential', desc: 'Subdivision plans available for three independent units. Detached stone stable also included with its own conversion potential.' }
           ].map((spec, i) => (
             <motion.div 
               key={i}
@@ -179,10 +179,9 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
           className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <div className="max-w-2xl">
-            <h2 className="text-5xl font-serif mb-6">The Vision</h2>
+            <h2 className="text-5xl font-serif mb-6">3D Renders</h2>
             <p className="text-neutral-500 leading-relaxed">
-              Merging historic Mediterranean charm with contemporary minimalist luxury. 
-              Our vision for the Brač Estate focuses on light, stone, and space.
+              Proposed interior renovation concepts showing one possible direction for the finished property.
             </p>
           </div>
           <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
