@@ -19,7 +19,7 @@ const fadeIn = {
 const PROPERTY_STATS = [
   { icon: Maximize, label: 'Area', value: '166 Meters Squared' },
   { icon: Trees, label: 'Gardens', value: 'Upper and Lower Garden' },
-  { icon: Waves, label: 'Sea View', value: 'View of the Sea in the Garden' },
+  { icon: Waves, label: 'Sea View', value: 'Sea View' },
   { icon: Mountain, label: 'Mountain View', value: 'Mountain View from the House' },
   { icon: Sun, label: 'Terrace', value: 'Private Terrace' },
   { icon: Car, label: 'Parking', value: 'Parking for a small car further up the road' },
