@@ -208,9 +208,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       <section className="py-32 px-6 max-w-7xl mx-auto">
         <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div {...fadeIn}>
-            <h2 className="text-5xl font-serif mb-6">3D Renders</h2>
+            <h2 className="text-5xl font-serif mb-6">The Property</h2>
             <p className="text-neutral-500 leading-relaxed mb-8">
-              Proposed interior renovation concepts showing one possible direction for the finished property.
+              A closer look at the property — from 3D renders of proposed renovation concepts, to on-site photography, and the stunning nearby beaches of Brač.
             </p>
             <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
               View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -248,10 +248,17 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             />
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.6 }} className="masonry-item">
-            <ParallaxImage 
-              src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1600" 
-              alt="View" 
+            <ParallaxImage
+              src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1600"
+              alt="View"
               aspectRatio="aspect-[16/9]"
+            />
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ delay: 0.8 }} className="masonry-item">
+            <ParallaxImage
+              src="/images/lovrecina.jpg"
+              alt="Lovrecina Beach"
+              aspectRatio="aspect-[4/3]"
             />
           </motion.div>
         </div>
