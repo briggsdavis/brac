@@ -87,7 +87,7 @@ const LOCATION_DATA = [
         distance: "5 min",
         feature: "Well-regarded family restaurant known for slow-roasted Brač lamb cooked under the peka. Popular with locals and visitors.",
         maps: "https://maps.google.com/?q=Konoba+Kopačina",
-        image: "/images/kopacina.jpg"
+        image: "/images/kopacinaa.jpg"
       },
       {
         name: "Pustinja Blaca",
