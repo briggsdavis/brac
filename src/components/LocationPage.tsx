@@ -11,34 +11,68 @@ const LOCATION_DATA = [
       {
         name: "Zlatni Rat (Bol)",
         distance: "35 min",
-        feature: "World-famous pebble cape",
+        feature: "A well-known pebble cape that shifts shape with the tides. One of the most visited beaches in Croatia.",
         maps: "https://maps.google.com/?q=Zlatni+Rat+Bol",
         image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=800"
       },
       {
         name: "Lovrečina Bay",
         distance: "12 min",
-        feature: "Sandy beach with Roman ruins",
+        feature: "A rare sandy beach on an island of pebbles, sheltered by a pine forest and home to early Roman ruins along the shoreline.",
         maps: "https://maps.google.com/?q=Lovrečina+Bay",
         image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        name: "Hundreds of Unexplored Coves",
+        distance: "All Around",
+        feature: "The island has a large number of secluded pebble coves and sea caves, many only reachable on foot or by boat. Most see very little foot traffic.",
+        maps: "https://maps.google.com/?q=Brac+Island+Croatia",
+        image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=800"
+      }
+    ]
+  },
+  {
+    id: "towns",
+    category: "Nearby Towns",
+    items: [
+      {
+        name: "Postira",
+        distance: "5 min drive",
+        feature: "The nearest coastal town. Has a weekly market, supermarket, medical centre, and ferry connection to Split on the mainland.",
+        maps: "https://maps.google.com/?q=Postira+Brac",
+        image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        name: "Supetar",
+        distance: "15 min",
+        feature: "The island's main town. Restaurants, bars, ATMs, and daily fast-ferry service to Split (50 min crossing).",
+        maps: "https://maps.google.com/?q=Supetar+Brac",
+        image: "https://images.unsplash.com/photo-1514222139-b7830d1784b7?auto=format&fit=crop&q=80&w=800"
       }
     ]
   },
   {
     id: "culture",
-    category: "Culture",
+    category: "Culture & Heritage",
     items: [
       {
-        name: "Blaca Hermitage",
-        distance: "45 min",
-        feature: "16th-century cliffside monastery",
-        maps: "https://maps.google.com/?q=Blaca+Hermitage",
+        name: "Chapel of Mikail",
+        distance: "45 min hike",
+        feature: "A small stone chapel in the mountains above Dol. About 45 minutes on foot along old shepherd paths through pine and scrub. Good views over the island and towards the Adriatic from the top.",
+        maps: "https://maps.google.com/?q=Dol+Brac+hiking",
         image: "https://images.unsplash.com/photo-1544551763-47a0159c963f?auto=format&fit=crop&q=80&w=800"
       },
       {
-        name: "Škrip Museum",
+        name: "Blaca Hermitage",
+        distance: "45 min",
+        feature: "A 16th-century monastery built into the cliffs of a remote canyon. Well-preserved and largely unchanged. Worth visiting if you have a full day.",
+        maps: "https://maps.google.com/?q=Blaca+Hermitage",
+        image: "https://images.unsplash.com/photo-1518005020250-675f04484825?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        name: "Škrip",
         distance: "8 min",
-        feature: "Oldest village on the island",
+        feature: "The oldest continuously inhabited settlement on Brač, with an Illyrian fortress, Roman mausoleum, and a small island museum inside a 16th-century castle.",
         maps: "https://maps.google.com/?q=Škrip+Museum",
         image: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=800"
       }
@@ -51,14 +85,14 @@ const LOCATION_DATA = [
       {
         name: "Konoba Kopačina",
         distance: "5 min",
-        feature: "Famous Brač lamb (Donji Humac)",
+        feature: "Well-regarded family restaurant known for slow-roasted Brač lamb cooked under the peka. Popular with locals and visitors.",
         maps: "https://maps.google.com/?q=Konoba+Kopačina",
         image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800"
       },
       {
         name: "Pustinja Blaca",
         distance: "40 min",
-        feature: "Traditional stone-oven dining",
+        feature: "Restaurant at the Blaca monastery site. Traditional food, remote setting, surrounded by olive groves.",
         maps: "https://maps.google.com/?q=Pustinja+Blaca",
         image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=800"
       }
@@ -71,23 +105,16 @@ const LOCATION_DATA = [
       {
         name: "Vidova Gora",
         distance: "25 min",
-        feature: "Highest peak of the Adriatic islands",
+        feature: "At 778m, the highest peak of any Adriatic island. On clear days the views stretch to the Italian coast. A trail from Bol takes around 2.5 hours on foot.",
         maps: "https://maps.google.com/?q=Vidova+Gora",
         image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&q=80&w=1200"
       },
       {
         name: "Dol Village",
         distance: "0 min",
-        feature: "Eco-ethno village with cave dwellings",
+        feature: "The village where the property is located. Stone houses, cave dwellings, and olive groves. Protected settlement with no new development permitted.",
         maps: "https://maps.google.com/?q=Dol+Brac",
-        image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80&w=1200"
-      },
-      {
-        name: "Island of Brač",
-        distance: "Exploration",
-        feature: "Famous for white stone and olive oil",
-        maps: "https://maps.google.com/?q=Brac+Island",
-        image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=1200"
+        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200"
       }
     ]
   }
@@ -176,9 +203,9 @@ export default function LocationPage() {
 
       <div className="flex-1 lg:pl-32">
         <motion.div {...fadeIn} className="mb-20">
-          <h2 className="text-5xl sm:text-7xl font-serif mb-6">The Radius</h2>
+          <h2 className="text-5xl sm:text-7xl font-serif mb-6">The Area</h2>
           <p className="text-neutral-500 max-w-xl font-light leading-relaxed">
-            Dol is perfectly positioned. A quiet sanctuary that remains connected to the island's most vibrant destinations.
+            Dol sits inland on Brač, within easy reach of the coast, beaches, and the island's main towns.
           </p>
         </motion.div>
 

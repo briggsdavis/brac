@@ -6,57 +6,57 @@ const OPPORTUNITIES = [
   {
     id: "multi-unit",
     number: "01",
-    title: "The Multi-Unit Yield",
-    subtitle: "The Developer Play",
-    objective: "Renovate the existing structure into three standalone luxury units.",
-    strategy: "Convert each floor (or wing) into a private 1-bedroom suite with independent entrances.",
-    financialUpside: "Triples the occupancy potential. In Brač, luxury stone apartments in heritage villages like Dol rent for €150–€250 per night during peak season.",
-    target: "Investors looking for high-yield short-term rental income through platforms like Airbnb and Booking.com.",
+    title: "Multi-Unit Rental",
+    subtitle: "Short-Term Lets",
+    objective: "Renovate the three floors as standalone units, each with an independent entrance.",
+    strategy: "Each floor becomes a self-contained 1-bedroom apartment. The detached stone stable could be converted separately as a garden-level studio, providing a fourth rentable unit.",
+    financialUpside: "Stone apartments in heritage villages on Brač typically rent for €150–€250 per night during peak season. The stable unit, if converted, would add further rental income independently of the main house.",
+    target: "Investors looking for short-term rental income through Airbnb or Booking.com.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
   },
   {
     id: "capital-appreciation",
     number: "02",
-    title: "The Capital Appreciation Play",
-    subtitle: "The Flip",
-    objective: "Buy as a ruin, renovate to \"Turnkey\" status, and resell.",
-    strategy: "Leverage the \"Protected Village\" status. Because new construction is strictly limited in Dol, renovated stone houses are \"rare assets.\"",
-    financialUpside: "Unrenovated ruins on Brač often sell for €150,000–€250,000, while fully restored luxury stone villas in the same area can command €600,000 to €1.2M+ depending on the finish and views.",
-    target: "Professional flippers or equity investors.",
+    title: "Renovate and Resell",
+    subtitle: "Capital Appreciation",
+    objective: "Buy as a renovation project, restore to a finished standard, and resell.",
+    strategy: "New construction is not permitted in Dol due to its protected village status. This restricts supply and supports resale values for renovated properties. A well-finished stone house in this location is difficult to replicate.",
+    financialUpside: "Unrestored stone properties on Brač typically sell for €150,000–€250,000. Fully restored stone houses in the same area have sold for €600,000 to €1.2M depending on finish and views.",
+    target: "Buyers looking to renovate and resell.",
     image: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    id: "family-estate",
+    id: "digital-nomad",
     number: "03",
-    title: "The Modern Heritage Family Estate",
-    subtitle: "Legacy Home",
-    objective: "A single-family \"Legacy Home\" that blends 200-year-old stone with a high-tech interior.",
-    strategy: "Keep the 3-unit layout internal (Guest wing, Kids' wing, Master suite) but function as one large house. Add an infinity pool overlooking the 2.2km valley view to the sea.",
-    lifestyleValue: "A secure, \"off-the-grid\" feel in a protected eco-ethno village, yet only 5 minutes from the ferry port in Postira.",
-    target: "High-net-worth families seeking a private summer compound.",
+    title: "Co-Living / Remote Work",
+    subtitle: "Monthly Rentals",
+    objective: "Set up the property as a co-living space targeting remote workers on monthly stays.",
+    strategy: "One unit functions as a shared workspace with Starlink internet, while the other two operate as private accommodation. The stable could serve as an additional private room.",
+    financialUpside: "Remote workers tend to book outside peak summer months (May, June, September, October), filling gaps in the rental calendar when short-stay tourist demand drops.",
+    target: "Investors targeting the remote work market following Croatia's 2023 Schengen entry.",
+    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1200"
+  },
+  {
+    id: "family-estate",
+    number: "04",
+    title: "Single Family Home",
+    subtitle: "Private Purchase",
+    objective: "Use the full 140m² as one large connected home.",
+    strategy: "Keep the three floors open as a single residence — separate wings for guests, children, and the main bedroom. Convert the stone stable into a guest annexe or caretaker's quarters. A pool could be added in the lower garden.",
+    lifestyleValue: "Quiet village setting with no new development permitted. 5 minutes from Postira and the ferry to Split.",
+    target: "Families looking for a private summer or year-round home.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1200"
   },
   {
     id: "retirement",
-    number: "04",
-    title: "The \"Golden Years\" Retirement Retreat",
-    subtitle: "Sanctuary",
-    objective: "A low-maintenance, high-comfort sanctuary for year-round living.",
-    strategy: "Focus on the ground floor as the primary living space with underfloor heating (crucial for Brač winters). Use the other units as hobby spaces or guest suites for visiting family.",
-    lifestyleValue: "Dol is famous for its \"slow living,\" clean air, and proximity to local agriculture (olive oil, wine, and the famous Dol lamb). It offers a peaceful pace of life away from the heavy tourist crowds of Bol.",
-    target: "Retirees from Northern Europe or North America looking for a tax-efficient, high-quality lifestyle in the EU.",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200"
-  },
-  {
-    id: "digital-nomad",
     number: "05",
-    title: "The Digital Nomad / Co-Living Hub",
-    subtitle: "Work-from-Paradise",
-    objective: "A \"Work-from-Paradise\" rental model.",
-    strategy: "One unit serves as a communal \"Co-working\" space with high-speed Starlink internet, while the other two provide private accommodation.",
-    financialUpside: "High-occupancy during the \"shoulder seasons\" (May, June, September, October) when traditional tourists are gone but digital nomads are seeking monthly stays.",
-    target: "Investors targeting the growing \"Remote Work\" migration to Croatia following the 2023 Schengen/Eurozone entry.",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1200"
+    title: "Retirement Home",
+    subtitle: "Year-Round Living",
+    objective: "A manageable home for year-round or seasonal living.",
+    strategy: "Use the ground floor as the main living space. Add underfloor heating for winter comfort. Use the upper floors and stable for visiting family or as hobby rooms.",
+    lifestyleValue: "Dol has clean air, low traffic, and is close to local farms producing olive oil, wine, and lamb. It is a quieter alternative to the more tourist-heavy coastal towns.",
+    target: "Retirees from Northern Europe or North America considering a permanent or seasonal move to the EU.",
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200"
   }
 ];
 
@@ -120,13 +120,8 @@ export default function OpportunityPage() {
           <button
             key={opt.id}
             onClick={() => scrollToSection(opt.id)}
-            className="group flex items-center gap-4 transition-all"
+            className="group flex items-center transition-all"
           >
-            <span className={`text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-500 ${
-              activeSection === opt.id ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
-            }`}>
-              {opt.title}
-            </span>
             <div className={`h-px transition-all duration-500 ${
               activeSection === opt.id ? "w-12 bg-black" : "w-6 bg-neutral-300 group-hover:bg-black group-hover:w-8"
             }`} />
@@ -209,9 +204,9 @@ export default function OpportunityPage() {
 
         {/* Final CTA */}
         <motion.section {...fadeIn} className="text-center py-20 border-t border-black/5">
-          <h3 className="text-3xl font-serif mb-8 italic">Ready to explore the technical documentation?</h3>
+          <h3 className="text-3xl font-serif mb-8 italic">Request the full property documents.</h3>
           <a
-            href="https://wa.me/385912345678"
+            href="https://wa.me/251944825058"
             className="inline-block bg-black text-white px-12 py-5 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105"
           >
             Request Full Investment Pack

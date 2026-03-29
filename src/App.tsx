@@ -4,6 +4,7 @@ import GalleryPage from './components/GalleryPage';
 import LocationPage from './components/LocationPage';
 import OpportunityPage from './components/OpportunityPage';
 import ContactPage from './components/ContactPage';
+import SpecificationsPage from './components/SpecificationsPage';
 import ParallaxImage from './components/ParallaxImage';
 import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -25,18 +26,27 @@ const PROPERTY_STATS = [
   { icon: Bath, label: 'Bathroom', value: '1 Bathroom' },
   { icon: Bed, label: 'Bedrooms', value: '4 Bedrooms' },
   { icon: Utensils, label: 'Kitchen', value: '1 Kitchen' },
+  { icon: Maximize, label: 'Stable', value: 'Detached Stone Stable Included' },
 ];
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [galleryFilter, setGalleryFilter] = useState<'all' | 'render' | 'site'>('all');
+
+  const navigateToGallery = (filter: 'all' | 'render' | 'site' = 'all') => {
+    setGalleryFilter(filter);
+    setCurrentPage('gallery');
+    window.scrollTo(0, 0);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'gallery': return <GalleryPage />;
+      case 'gallery': return <GalleryPage initialFilter={galleryFilter} />;
       case 'location': return <LocationPage />;
       case 'opportunity': return <OpportunityPage />;
+      case 'specifications': return <SpecificationsPage />;
       case 'contact': return <ContactPage />;
-      default: return <Home />;
+      default: return <Home onNavigateToGallery={navigateToGallery} />;
     }
   };
 
@@ -53,7 +63,7 @@ export default function App() {
   );
 }
 
-function Home() {
+function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | 'render' | 'site') => void }) {
   return (
     <>
       {/* Hero Section */}
@@ -90,7 +100,7 @@ function Home() {
             transition={{ delay: 1 }}
             className="max-w-sm text-[10px] sm:text-xs font-light tracking-wide opacity-80 mb-10"
           >
-            A rare investment opportunity in the heart of Dol. Three-unit potential with panoramic Adriatic views.
+            A rare investment opportunity in the heart of Dol. Three-unit potential with panoramic Adriatic views, plus a detached stone stable with its own conversion potential.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -118,9 +128,9 @@ function Home() {
       <section id="specs" className="py-32 px-6 max-w-7xl mx-auto border-b border-black/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-20">
           {[
-            { label: 'Heritage', title: 'Historic Status', desc: 'Protected stone architecture dating back to the 18th century, meticulously preserved.' },
-            { label: 'Proximity', title: '2.2km to Beach', desc: 'A short drive or scenic walk to the crystal clear waters of the Adriatic coast.' },
-            { label: 'Yield', title: '3-Unit Potential', desc: 'Architectural plans ready for subdivision into three independent luxury residences.' }
+            { label: 'Heritage', title: 'Historic Status', desc: 'Stone construction dating back to the 18th century. Protected village status — no new development permitted in Dol.' },
+            { label: 'Proximity', title: '2.2km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
+            { label: 'Yield', title: '3-Unit Potential', desc: 'Subdivision plans available for three independent units. Detached stone stable also included with its own conversion potential.' }
           ].map((spec, i) => (
             <motion.div 
               key={i}
@@ -169,13 +179,12 @@ function Home() {
           className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <div className="max-w-2xl">
-            <h2 className="text-5xl font-serif mb-6">The Vision</h2>
+            <h2 className="text-5xl font-serif mb-6">3D Renders</h2>
             <p className="text-neutral-500 leading-relaxed">
-              Merging historic Mediterranean charm with contemporary minimalist luxury. 
-              Our vision for the Brač Estate focuses on light, stone, and space.
+              Proposed interior renovation concepts showing one possible direction for the finished property.
             </p>
           </div>
-          <button className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
+          <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
             View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
           </button>
         </motion.div>
@@ -232,6 +241,7 @@ function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
             <li><button onClick={() => onNavigate('gallery')} className="hover:text-black hover:translate-x-1 transition-all">Gallery</button></li>
             <li><button onClick={() => onNavigate('location')} className="hover:text-black hover:translate-x-1 transition-all">Location</button></li>
             <li><button onClick={() => onNavigate('opportunity')} className="hover:text-black hover:translate-x-1 transition-all">Opportunity</button></li>
+            <li><button onClick={() => onNavigate('specifications')} className="hover:text-black hover:translate-x-1 transition-all">Specifications</button></li>
             <li><button onClick={() => onNavigate('contact')} className="hover:text-black hover:translate-x-1 transition-all">Contact</button></li>
           </ul>
         </div>

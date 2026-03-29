@@ -15,8 +15,7 @@ export default function ContactPage() {
         <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-400 mb-4 block">Get in Touch</span>
         <h2 className="text-5xl sm:text-7xl font-serif mb-8">Direct Inquiry</h2>
         <p className="max-w-2xl mx-auto text-neutral-500 leading-relaxed">
-          Whether you are a professional developer, a private investor, or seeking a legacy family home, 
-          our team is here to provide technical documentation and site visit coordination.
+          For property details, documentation, or to arrange a site visit, get in touch directly.
         </p>
       </motion.div>
 
@@ -53,7 +52,7 @@ export default function ContactPage() {
             
             <div className="p-6 bg-white rounded-2xl border border-black/5">
               <p className="text-sm font-serif italic text-neutral-600">
-                "I personally guarantee a response to all investment inquiries within the hour."
+                "Happy to answer questions and arrange site visits. I'll get back to you the same day."
               </p>
             </div>
           </div>
