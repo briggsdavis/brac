@@ -218,7 +218,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           </motion.div>
           <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.2 }} className="overflow-hidden">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
+              src="/images/opportunityhero.jpg"
               alt="Renovation Render"
               aspectRatio="aspect-[4/3]"
             />
@@ -235,29 +235,29 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="masonry-item">
             <ParallaxImage 
-              src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1200" 
-              alt="Detail" 
+              src="/renderfront.jpg"
+              alt="Render Front"
               aspectRatio="aspect-square"
             />
           </motion.div>
-          <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="masonry-item">
-            <ParallaxImage 
-              src="https://images.unsplash.com/photo-1544551763-47a0159c963f?auto=format&fit=crop&q=80&w=1200" 
-              alt="Interior" 
-              aspectRatio="aspect-[3/4]"
-            />
-          </motion.div>
-          <motion.div {...fadeIn} transition={{ delay: 0.6 }} className="masonry-item">
+<motion.div {...fadeIn} transition={{ delay: 0.6 }} className="masonry-item">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1600"
-              alt="View"
-              aspectRatio="aspect-[16/9]"
+              src="/images/lovrecina.jpg"
+              alt="Lovrecina Beach"
+              aspectRatio="aspect-[4/3]"
             />
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.8 }} className="masonry-item">
             <ParallaxImage
-              src="/images/lovrecina.jpg"
-              alt="Lovrecina Beach"
+              src="/renderkitchen.jpg"
+              alt="Kitchen Render"
+              aspectRatio="aspect-[4/3]"
+            />
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ delay: 1.0 }} className="masonry-item">
+            <ParallaxImage
+              src="/images/multi.jpg"
+              alt="Multi"
               aspectRatio="aspect-[4/3]"
             />
           </motion.div>
