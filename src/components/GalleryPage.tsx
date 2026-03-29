@@ -5,26 +5,17 @@ import { motion } from "motion/react";
 import ParallaxImage from "./ParallaxImage";
 
 const IMAGES = [
-  { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", alt: "Modern Refurbished Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=1200", alt: "Luxury Interior Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1200", alt: "Modern Pool Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", alt: "Refurbished Kitchen Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=1200", alt: "Living Room Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&q=80&w=1200", alt: "Bedroom Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600585154542-6379b14616fd?auto=format&fit=crop&q=80&w=1200", alt: "Bathroom Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600566753086-00f18fb6f3ea?auto=format&fit=crop&q=80&w=1200", alt: "Dining Area Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&q=80&w=1200", alt: "Terrace Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", alt: "Garden Render", category: "render" },
-  { src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1200", alt: "Current Site Exterior", category: "site" },
-  { src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1200", alt: "Current Site View", category: "site" },
-  { src: "https://images.unsplash.com/photo-1544551763-47a0159c963f?auto=format&fit=crop&q=80&w=1200", alt: "Current Site Stone Detail", category: "site" },
-  { src: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1200", alt: "Current Site Courtyard", category: "site" },
-  { src: "https://images.unsplash.com/photo-1514222139-b7830d1784b7?auto=format&fit=crop&q=80&w=1200", alt: "Adriatic Coastline", category: "site" },
-  { src: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80&w=1200", alt: "Local Village Architecture", category: "site" },
-  { src: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200", alt: "Stone House Detail", category: "site" },
-  { src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&q=80&w=1200", alt: "Mountain View", category: "site" },
-  { src: "https://images.unsplash.com/photo-1518005020250-675f04484825?auto=format&fit=crop&q=80&w=1200", alt: "Garden Path", category: "site" },
-  { src: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=1200", alt: "Sunset over Brač", category: "site" },
+  { src: "/renderbedroom.jpg", alt: "Bedroom Render", category: "render" },
+  { src: "/renderbathroom.jpg", alt: "Bathroom Render", category: "render" },
+  { src: "/renderkitchen.jpg", alt: "Kitchen Render", category: "render" },
+  { src: "/renderliving.jpg", alt: "Living Room Render", category: "render" },
+  { src: "/renderstable.jpg", alt: "Stable Render", category: "render" },
+  { src: "/sitekitchen.jpg", alt: "Kitchen Site Photo", category: "site" },
+  { src: "/sitebedroom.jpg", alt: "Bedroom Site Photo", category: "site" },
+  { src: "/sitebathroom.jpg", alt: "Bathroom Site Photo", category: "site" },
+  { src: "/siteliving.jpg", alt: "Living Room Site Photo", category: "site" },
+  { src: "/sitestable.jpg", alt: "Stable Site Photo", category: "site" },
+  { src: "/siteterrace.jpg", alt: "Terrace Site Photo", category: "site" },
 ];
 
 const fadeIn = {
