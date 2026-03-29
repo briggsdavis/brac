@@ -6,7 +6,7 @@ import OpportunityPage from './components/OpportunityPage';
 import ContactPage from './components/ContactPage';
 import SpecificationsPage from './components/SpecificationsPage';
 import ParallaxImage from './components/ParallaxImage';
-import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils } from 'lucide-react';
+import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bed, Landmark, Leaf } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const fadeIn = {
@@ -23,10 +23,10 @@ const PROPERTY_STATS = [
   { icon: Mountain, label: 'Mountain View', value: 'Mountain View from the House' },
   { icon: Sun, label: 'Terrace', value: 'Private Terrace' },
   { icon: Car, label: 'Parking', value: 'Parking for a small car further up the road' },
-  { icon: Bath, label: 'Bathroom', value: '1 Bathroom' },
-  { icon: Bed, label: 'Bedrooms', value: '4 Bedrooms' },
-  { icon: Utensils, label: 'Kitchen', value: '1 Kitchen' },
+  { icon: Bed, label: 'Bedrooms', value: '3 Bedrooms' },
   { icon: Maximize, label: 'Stable', value: 'Detached Stone Stable Included' },
+  { icon: Landmark, label: 'Heritage', value: 'Historic Stone Construction — 1890' },
+  { icon: Leaf, label: 'Olive Grove', value: 'Private Olive Grove' },
 ];
 
 export default function App() {
