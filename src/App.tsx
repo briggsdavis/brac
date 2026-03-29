@@ -29,14 +29,21 @@ const PROPERTY_STATS = [
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [galleryFilter, setGalleryFilter] = useState<'all' | 'render' | 'site'>('all');
+
+  const navigateToGallery = (filter: 'all' | 'render' | 'site' = 'all') => {
+    setGalleryFilter(filter);
+    setCurrentPage('gallery');
+    window.scrollTo(0, 0);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'gallery': return <GalleryPage />;
+      case 'gallery': return <GalleryPage initialFilter={galleryFilter} />;
       case 'location': return <LocationPage />;
       case 'opportunity': return <OpportunityPage />;
       case 'contact': return <ContactPage />;
-      default: return <Home />;
+      default: return <Home onNavigateToGallery={navigateToGallery} />;
     }
   };
 
@@ -53,7 +60,7 @@ export default function App() {
   );
 }
 
-function Home() {
+function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | 'render' | 'site') => void }) {
   return (
     <>
       {/* Hero Section */}
@@ -175,7 +182,7 @@ function Home() {
               Our vision for the Brač Estate focuses on light, stone, and space.
             </p>
           </div>
-          <button className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
+          <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
             View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
           </button>
         </motion.div>

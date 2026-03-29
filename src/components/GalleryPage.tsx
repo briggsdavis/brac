@@ -34,9 +34,9 @@ const fadeIn = {
   transition: { duration: 0.8 }
 };
 
-export default function GalleryPage() {
+export default function GalleryPage({ initialFilter = "all" }: { initialFilter?: "all" | "render" | "site" }) {
   const [index, setIndex] = useState(-1);
-  const [filter, setFilter] = useState<"all" | "render" | "site">("all");
+  const [filter, setFilter] = useState<"all" | "render" | "site">(initialFilter);
 
   const filteredImages = filter === "all" ? IMAGES : IMAGES.filter(img => img.category === filter);
 
