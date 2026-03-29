@@ -5,10 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brac Estate</title>
     <link rel="icon" href="/images/bracfav.jpg" />
+    <style>
+      #entry-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+
+        /* Start invisible, fade in after content loads */
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1s ease;
+      }
+
+      #entry-overlay.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #entry-overlay .overlay-label {
+        font-family: "Playfair Display", "Libre Baskerville", Georgia, serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 0.5rem;
+      }
+
+      #entry-overlay button {
+        width: 260px;
+        padding: 1rem 2.5rem;
+        font-family: "Inter", "Helvetica Neue", sans-serif;
+        font-size: 0.625rem;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      #btn-audio {
+        background: #fff;
+        color: #1a1a1a;
+        border: 1px solid #fff;
+      }
+
+      #btn-audio:hover {
+        background: #e5e0d4;
+      }
+
+      #btn-no-audio {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+      }
+
+      #btn-no-audio:hover {
+        background: #fff;
+        color: #1a1a1a;
+      }
+    </style>
   </head>
   <body>
+    <audio id="bg-audio" src="/bgaudio.mp3" loop></audio>
+
+    <div id="entry-overlay">
+      <span class="overlay-label">Brač Estate</span>
+      <button id="btn-audio">Enter with Audio</button>
+      <button id="btn-no-audio">Enter without Audio</button>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      (function () {
+        const overlay = document.getElementById('entry-overlay');
+        const audio = document.getElementById('bg-audio');
+
+        // Wait for page load, then delay to let hero animations play through
+        window.addEventListener('load', function () {
+          setTimeout(function () {
+            overlay.classList.add('visible');
+          }, 2200);
+        });
+
+        document.getElementById('btn-audio').addEventListener('click', function () {
+          audio.volume = 0.1;
+          audio.play();
+          overlay.style.transition = 'opacity 0.6s ease';
+          overlay.style.opacity = '0';
+          overlay.addEventListener('transitionend', function () {
+            overlay.remove();
+          }, { once: true });
+        });
+
+        document.getElementById('btn-no-audio').addEventListener('click', function () {
+          overlay.style.transition = 'opacity 0.6s ease';
+          overlay.style.opacity = '0';
+          overlay.addEventListener('transitionend', function () {
+            overlay.remove();
+          }, { once: true });
+        });
+      })();
+    </script>
   </body>
 </html>
-

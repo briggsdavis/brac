@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, MessageCircle } from 'lucide-react';
+import { X, MessageCircle, Volume2, VolumeX } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'motion/react';
@@ -26,6 +26,15 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const toggleMute = () => {
+    const audio = document.getElementById('bg-audio') as HTMLAudioElement | null;
+    if (audio) {
+      audio.muted = !audio.muted;
+      setIsMuted(audio.muted);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,13 +93,22 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
             </h1>
           </div>
 
-          <button
-            onClick={() => handleNav('contact')}
-            className="bg-black text-white px-6 py-2.5 text-[10px] uppercase tracking-[0.2em] font-semibold hover:bg-neutral-800 hover:scale-105 transition-all flex items-center gap-2 z-[80]"
-          >
-            <span className="hidden sm:inline">Contact</span>
-            <MessageCircle className="w-4 h-4 sm:hidden" />
-          </button>
+          <div className="flex items-center gap-3 z-[80]">
+            <button
+              onClick={toggleMute}
+              aria-label={isMuted ? 'Unmute' : 'Mute'}
+              className="hover:scale-110 transition-transform"
+            >
+              {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            </button>
+            <button
+              onClick={() => handleNav('contact')}
+              className="bg-black text-white px-6 py-2.5 text-[10px] uppercase tracking-[0.2em] font-semibold hover:bg-neutral-800 hover:scale-105 transition-all flex items-center gap-2"
+            >
+              <span className="hidden sm:inline">Contact</span>
+              <MessageCircle className="w-4 h-4 sm:hidden" />
+            </button>
+          </div>
         </div>
       </header>
 
