@@ -114,7 +114,7 @@ const LOCATION_DATA = [
         distance: "0 min",
         feature: "The village where the property is located. Stone houses, cave dwellings, and olive groves. Protected settlement with no new development permitted.",
         maps: "https://maps.google.com/?q=Dol+Brac",
-        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200"
+        image: "/images/dolvillagetwo.jpg"
       }
     ]
   }
