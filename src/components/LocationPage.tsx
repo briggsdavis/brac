@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import ParallaxImage from './ParallaxImage';
 
@@ -127,7 +127,7 @@ const fadeIn = {
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
 };
 
-export default function LocationPage() {
+export default function LocationPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [activeSection, setActiveSection] = useState(LOCATION_DATA[0].id);
   const { scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, {
@@ -252,6 +252,29 @@ export default function LocationPage() {
             </section>
           ))}
         </div>
+
+        {/* Funnel CTA → Contact */}
+        {onNavigate && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-24 pt-16 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-6"
+          >
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Next Step</p>
+              <p className="font-serif text-3xl">Make an Enquiry</p>
+              <p className="text-sm text-neutral-500 mt-2">Reach out to arrange a viewing or request the full investment pack.</p>
+            </div>
+            <button
+              onClick={() => { onNavigate('contact'); window.scrollTo(0, 0); }}
+              className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
+            >
+              Contact Us <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        )}
       </div>
     </div>
   );

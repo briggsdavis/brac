@@ -1,6 +1,7 @@
-import { motion, useScroll, useSpring } from "motion/react";
+import { motion } from "motion/react";
 import ParallaxImage from "./ParallaxImage";
 import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 const OPPORTUNITIES = [
   {
@@ -67,14 +68,8 @@ const fadeIn = {
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
 };
 
-export default function OpportunityPage() {
+export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [activeSection, setActiveSection] = useState(OPPORTUNITIES[0].id);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,6 +109,52 @@ export default function OpportunityPage() {
 
   return (
     <div className="relative">
+
+      {/* Roadmap Intro */}
+      <section className="pt-32 pb-0 px-6 max-w-7xl mx-auto">
+        <motion.div {...fadeIn} className="mb-6">
+          <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-400">The Property</span>
+        </motion.div>
+        <motion.h1 {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.1 }} className="text-4xl sm:text-5xl font-serif leading-tight mb-10 max-w-4xl">
+          Authentic Stone Property with Dual Potential —<br className="hidden sm:block" /> Dol, Island of Brač, Croatia
+        </motion.h1>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-24">
+          <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.15 }} className="space-y-6 text-neutral-600 leading-relaxed">
+            <p className="text-base font-serif italic text-neutral-800">
+              Unlock the charm of traditional Dalmatian village life with a rare renovation project in the EU-protected ethno eco village of Dol on the iconic Island of Brač — the second-largest island in the Adriatic Sea, known for historic villages, unspoiled beaches, the highest point in the Mediterranean (Vidova Gora), Mediterranean landscapes, and easy access from Split (airport and ferry).
+            </p>
+            <p className="text-sm">
+              This unique stone property offers two structures with flexible redevelopment options — perfect for investors, renovators, extended families, or dual-income living.
+            </p>
+            <div className="border-l-2 border-black/10 pl-6 space-y-4">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Main House</p>
+                <p className="text-sm">Approximately 166 m² across three distinct levels of solid stone construction. Could be kept as one large family residence or subdivided into two self-contained units — ideal for short-term rentals, long-term letting, or a high-value resale after renovation.</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">The Stable</p>
+                <p className="text-sm">A detached stone structure with its own entrance from the lower garden. Independent from the main house and fully convertible into a studio or one-bedroom annexe — a self-contained income unit or guest accommodation.</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">The Gardens & Views</p>
+                <p className="text-sm">All units have access to the gardens. The upper unit enjoys Adriatic sea views from the terrace. The lower units and the stable have both sea and mountain views from the lower garden. Whether kept as one estate or split into multiple properties, every unit carries genuine view value.</p>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.3 }} className="overflow-hidden">
+            <ParallaxImage
+              src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1200"
+              alt="Stone Property Brač"
+              aspectRatio="aspect-[4/5]"
+            />
+          </motion.div>
+        </div>
+        <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.2 }} className="mb-12 pb-12 border-b border-black/5">
+          <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-400">Investment Scenarios</span>
+          <h2 className="text-3xl font-serif mt-3">How You Could Use This Property</h2>
+        </motion.div>
+      </section>
+
       {/* Fast Travel Sidebar */}
       <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col gap-8 items-end">
         {OPPORTUNITIES.map((opt) => (
@@ -129,11 +170,6 @@ export default function OpportunityPage() {
         ))}
       </div>
 
-      {/* Progress Bar */}
-      <motion.div
-        className="fixed top-20 left-0 right-0 h-0.5 bg-black origin-left z-[75]"
-        style={{ scaleX }}
-      />
 
       <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-40 sm:space-y-64">
         {OPPORTUNITIES.map((opt, i) => (
@@ -201,6 +237,23 @@ export default function OpportunityPage() {
             </motion.div>
           </section>
         ))}
+
+        {/* Funnel CTA → Location */}
+        {onNavigate && (
+          <motion.section {...fadeIn} className="py-20 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Next Step</p>
+              <p className="font-serif text-3xl">Discover the Location</p>
+              <p className="text-sm text-neutral-500 mt-2">Beaches, towns, transport links, and what makes Brač stand out.</p>
+            </div>
+            <button
+              onClick={() => { onNavigate('location'); window.scrollTo(0, 0); }}
+              className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
+            >
+              View Location <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.section>
+        )}
 
         {/* Final CTA */}
         <motion.section {...fadeIn} className="text-center py-20 border-t border-black/5">
