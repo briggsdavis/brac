@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring } from "motion/react";
+import { motion } from "motion/react";
 import ParallaxImage from "./ParallaxImage";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
@@ -70,12 +70,6 @@ const fadeIn = {
 
 export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [activeSection, setActiveSection] = useState(OPPORTUNITIES[0].id);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -176,11 +170,6 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
         ))}
       </div>
 
-      {/* Progress Bar */}
-      <motion.div
-        className="fixed top-20 left-0 right-0 h-0.5 bg-black origin-left z-[75]"
-        style={{ scaleX }}
-      />
 
       <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-40 sm:space-y-64">
         {OPPORTUNITIES.map((opt, i) => (
