@@ -26,8 +26,19 @@ const OPPORTUNITIES = [
     image: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    id: "family-estate",
+    id: "digital-nomad",
     number: "03",
+    title: "The Digital Nomad / Co-Living Hub",
+    subtitle: "Work-from-Paradise",
+    objective: "A \"Work-from-Paradise\" rental model.",
+    strategy: "One unit serves as a communal \"Co-working\" space with high-speed Starlink internet, while the other two provide private accommodation.",
+    financialUpside: "High-occupancy during the \"shoulder seasons\" (May, June, September, October) when traditional tourists are gone but digital nomads are seeking monthly stays.",
+    target: "Investors targeting the growing \"Remote Work\" migration to Croatia following the 2023 Schengen/Eurozone entry.",
+    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1200"
+  },
+  {
+    id: "family-estate",
+    number: "04",
     title: "The Modern Heritage Family Estate",
     subtitle: "Legacy Home",
     objective: "A single-family \"Legacy Home\" that blends 200-year-old stone with a high-tech interior.",
@@ -38,7 +49,7 @@ const OPPORTUNITIES = [
   },
   {
     id: "retirement",
-    number: "04",
+    number: "05",
     title: "The \"Golden Years\" Retirement Retreat",
     subtitle: "Sanctuary",
     objective: "A low-maintenance, high-comfort sanctuary for year-round living.",
@@ -46,17 +57,6 @@ const OPPORTUNITIES = [
     lifestyleValue: "Dol is famous for its \"slow living,\" clean air, and proximity to local agriculture (olive oil, wine, and the famous Dol lamb). It offers a peaceful pace of life away from the heavy tourist crowds of Bol.",
     target: "Retirees from Northern Europe or North America looking for a tax-efficient, high-quality lifestyle in the EU.",
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200"
-  },
-  {
-    id: "digital-nomad",
-    number: "05",
-    title: "The Digital Nomad / Co-Living Hub",
-    subtitle: "Work-from-Paradise",
-    objective: "A \"Work-from-Paradise\" rental model.",
-    strategy: "One unit serves as a communal \"Co-working\" space with high-speed Starlink internet, while the other two provide private accommodation.",
-    financialUpside: "High-occupancy during the \"shoulder seasons\" (May, June, September, October) when traditional tourists are gone but digital nomads are seeking monthly stays.",
-    target: "Investors targeting the growing \"Remote Work\" migration to Croatia following the 2023 Schengen/Eurozone entry.",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1200"
   }
 ];
 
@@ -120,13 +120,8 @@ export default function OpportunityPage() {
           <button
             key={opt.id}
             onClick={() => scrollToSection(opt.id)}
-            className="group flex items-center gap-4 transition-all"
+            className="group flex items-center transition-all"
           >
-            <span className={`text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-500 ${
-              activeSection === opt.id ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
-            }`}>
-              {opt.title}
-            </span>
             <div className={`h-px transition-all duration-500 ${
               activeSection === opt.id ? "w-12 bg-black" : "w-6 bg-neutral-300 group-hover:bg-black group-hover:w-8"
             }`} />
