@@ -13,21 +13,21 @@ const LOCATION_DATA = [
         distance: "35 min",
         feature: "A well-known pebble cape that shifts shape with the tides. One of the most visited beaches in Croatia.",
         maps: "https://maps.google.com/?q=Zlatni+Rat+Bol",
-        image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=800"
+        image: "/images/bol.jpg"
       },
       {
         name: "Lovrečina Bay",
         distance: "12 min",
         feature: "A rare sandy beach on an island of pebbles, sheltered by a pine forest and home to early Roman ruins along the shoreline.",
         maps: "https://maps.google.com/?q=Lovrečina+Bay",
-        image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=800"
+        image: "/images/lovrecina.jpg"
       },
       {
         name: "Hundreds of Unexplored Coves",
         distance: "All Around",
         feature: "The island has a large number of secluded pebble coves and sea caves, many only reachable on foot or by boat. Most see very little foot traffic.",
         maps: "https://maps.google.com/?q=Brac+Island+Croatia",
-        image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=800"
+        image: "/images/brac.jpg"
       }
     ]
   },
@@ -67,14 +67,14 @@ const LOCATION_DATA = [
         distance: "45 min",
         feature: "A 16th-century monastery built into the cliffs of a remote canyon. Well-preserved and largely unchanged. Worth visiting if you have a full day.",
         maps: "https://maps.google.com/?q=Blaca+Hermitage",
-        image: "https://images.unsplash.com/photo-1518005020250-675f04484825?auto=format&fit=crop&q=80&w=800"
+        image: "/images/blaca.jpg"
       },
       {
         name: "Škrip",
         distance: "8 min",
         feature: "The oldest continuously inhabited settlement on Brač, with an Illyrian fortress, Roman mausoleum, and a small island museum inside a 16th-century castle.",
         maps: "https://maps.google.com/?q=Škrip+Museum",
-        image: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=800"
+        image: "/images/skrip.jpg"
       }
     ]
   },
@@ -87,7 +87,7 @@ const LOCATION_DATA = [
         distance: "5 min",
         feature: "Well-regarded family restaurant known for slow-roasted Brač lamb cooked under the peka. Popular with locals and visitors.",
         maps: "https://maps.google.com/?q=Konoba+Kopačina",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800"
+        image: "/images/kopacina.jpg"
       },
       {
         name: "Pustinja Blaca",
@@ -107,14 +107,14 @@ const LOCATION_DATA = [
         distance: "25 min",
         feature: "At 778m, the highest peak of any Adriatic island. On clear days the views stretch to the Italian coast. A trail from Bol takes around 2.5 hours on foot.",
         maps: "https://maps.google.com/?q=Vidova+Gora",
-        image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&q=80&w=1200"
+        image: "/images/vidovagora.jpg"
       },
       {
         name: "Dol Village",
         distance: "0 min",
         feature: "The village where the property is located. Stone houses, cave dwellings, and olive groves. Protected settlement with no new development permitted.",
         maps: "https://maps.google.com/?q=Dol+Brac",
-        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200"
+        image: "/images/dolvillagetwo.jpg"
       }
     ]
   }
