@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench, ArrowRight } from "lucide-react";
 
 const CAROUSEL_IMAGES = [
   { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600", alt: "Refurbished Interior Render" },
@@ -85,7 +85,7 @@ const fadeIn = {
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
 };
 
-export default function SpecificationsPage() {
+export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [expandedFloor, setExpandedFloor] = useState<number | null>(null);
@@ -317,6 +317,23 @@ export default function SpecificationsPage() {
           Request Floor Plan
         </a>
       </motion.div>
+
+      {/* Funnel CTA → Opportunity */}
+      {onNavigate && (
+        <motion.div {...fadeIn} className="mt-16 pt-16 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Next Step</p>
+            <p className="font-serif text-3xl">Explore the Opportunity</p>
+            <p className="text-sm text-neutral-500 mt-2">See investment scenarios, rental projections, and resale potential.</p>
+          </div>
+          <button
+            onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
+            className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
+          >
+            View Opportunities <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
+      )}
 
     </div>
   );

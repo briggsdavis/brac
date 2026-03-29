@@ -17,7 +17,7 @@ const fadeIn = {
 };
 
 const PROPERTY_STATS = [
-  { icon: Maximize, label: 'Area', value: '140 Meters Squared' },
+  { icon: Maximize, label: 'Area', value: '166 Meters Squared' },
   { icon: Trees, label: 'Gardens', value: 'Upper and Lower Garden' },
   { icon: Waves, label: 'Sea View', value: 'View of the Sea in the Garden' },
   { icon: Mountain, label: 'Mountain View', value: 'Mountain View from the House' },
@@ -42,11 +42,11 @@ export default function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'gallery': return <GalleryPage initialFilter={galleryFilter} />;
-      case 'location': return <LocationPage />;
-      case 'opportunity': return <OpportunityPage />;
-      case 'specifications': return <SpecificationsPage />;
+      case 'location': return <LocationPage onNavigate={setCurrentPage} />;
+      case 'opportunity': return <OpportunityPage onNavigate={setCurrentPage} />;
+      case 'specifications': return <SpecificationsPage onNavigate={setCurrentPage} />;
       case 'contact': return <ContactPage />;
-      default: return <Home onNavigateToGallery={navigateToGallery} />;
+      default: return <Home onNavigateToGallery={navigateToGallery} onNavigate={setCurrentPage} />;
     }
   };
 
@@ -63,7 +63,7 @@ export default function App() {
   );
 }
 
-function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | 'render' | 'site') => void }) {
+function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filter: 'all' | 'render' | 'site') => void; onNavigate: (page: string) => void }) {
   return (
     <>
       {/* Hero Section */}
@@ -102,13 +102,13 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
           >
             A rare investment opportunity in the heart of Dol. Three-unit potential with panoramic Adriatic views, plus a detached stone stable with its own conversion potential.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-6"
+            className="flex flex-col sm:flex-row gap-4"
           >
-            <button 
+            <button
               onClick={() => {
                 const el = document.getElementById('specs');
                 el?.scrollIntoView({ behavior: 'smooth' });
@@ -116,6 +116,12 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
               className="border border-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-black transition-all"
             >
               Explore Details
+            </button>
+            <button
+              onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
+              className="bg-white text-black px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-200 transition-all"
+            >
+              View Opportunity
             </button>
           </motion.div>
         </div>
@@ -146,6 +152,19 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
         </div>
       </section>
 
+      {/* Quick Specs CTA */}
+      <section className="py-10 px-6 max-w-7xl mx-auto border-b border-black/5">
+        <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-neutral-500">Full technical breakdown of the property — area, rooms, utilities, and more.</p>
+          <button
+            onClick={() => { onNavigate('specifications'); window.scrollTo(0, 0); }}
+            className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
+          >
+            View Full Specifications <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+          </button>
+        </motion.div>
+      </section>
+
       {/* Property Stats Section */}
       <section className="py-32 px-6 bg-neutral-50">
         <div className="max-w-7xl mx-auto">
@@ -172,22 +191,39 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
         </div>
       </section>
 
-      {/* Home Masonry Grid */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
-        <motion.div 
-          {...fadeIn}
-          className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8"
-        >
-          <div className="max-w-2xl">
-            <h2 className="text-5xl font-serif mb-6">3D Renders</h2>
-            <p className="text-neutral-500 leading-relaxed">
-              Proposed interior renovation concepts showing one possible direction for the finished property.
-            </p>
-          </div>
-          <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
-            View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+      {/* Opportunity CTA */}
+      <section className="py-10 px-6 max-w-7xl mx-auto border-b border-black/5">
+        <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-neutral-500">See the investment options — short-term lets, resale, co-living, and more.</p>
+          <button
+            onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
+            className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
+          >
+            Explore the Opportunity <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
           </button>
         </motion.div>
+      </section>
+
+      {/* Home Masonry Grid */}
+      <section className="py-32 px-6 max-w-7xl mx-auto">
+        <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <motion.div {...fadeIn}>
+            <h2 className="text-5xl font-serif mb-6">3D Renders</h2>
+            <p className="text-neutral-500 leading-relaxed mb-8">
+              Proposed interior renovation concepts showing one possible direction for the finished property.
+            </p>
+            <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
+              View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+            </button>
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.2 }} className="overflow-hidden">
+            <ParallaxImage
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
+              alt="Renovation Render"
+              aspectRatio="aspect-[4/3]"
+            />
+          </motion.div>
+        </div>
 
         <div className="masonry-grid masonry-grid-2">
           <motion.div {...fadeIn} className="masonry-item">
@@ -219,6 +255,28 @@ function Home({ onNavigateToGallery }: { onNavigateToGallery: (filter: 'all' | '
             />
           </motion.div>
         </div>
+
+        {/* Home Contact CTA */}
+        <motion.div {...fadeIn} className="mt-20 py-16 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Ready to proceed?</p>
+            <p className="font-serif text-3xl">Get in Touch</p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={() => { onNavigate('location'); window.scrollTo(0, 0); }}
+              className="border border-black px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-50 transition-all"
+            >
+              View Location
+            </button>
+            <button
+              onClick={() => { onNavigate('contact'); window.scrollTo(0, 0); }}
+              className="bg-black text-white px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all"
+            >
+              Contact Us
+            </button>
+          </div>
+        </motion.div>
       </section>
     </>
   );
