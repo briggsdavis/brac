@@ -5,10 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brac Estate</title>
     <link rel="icon" href="/images/bracfav.jpg" />
+    <style>
+      #entry-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+
+      #entry-overlay button {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 4px;
+        letter-spacing: 0.05em;
+        transition: background 0.2s;
+      }
+
+      #entry-overlay button:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+    </style>
   </head>
   <body>
+    <audio id="bg-audio" src="/BG_audio.mp3" loop></audio>
+
+    <div id="entry-overlay">
+      <button id="btn-audio">Enter with Audio</button>
+      <button id="btn-no-audio">Enter without Audio</button>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      (function () {
+        const overlay = document.getElementById('entry-overlay');
+        const audio = document.getElementById('bg-audio');
+
+        document.getElementById('btn-audio').addEventListener('click', function () {
+          audio.volume = 0.2;
+          audio.play();
+          overlay.remove();
+        });
+
+        document.getElementById('btn-no-audio').addEventListener('click', function () {
+          overlay.remove();
+        });
+      })();
+    </script>
   </body>
 </html>
-
