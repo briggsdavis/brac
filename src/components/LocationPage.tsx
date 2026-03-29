@@ -10,7 +10,7 @@ const LOCATION_DATA = [
     items: [
       {
         name: "Zlatni Rat (Bol)",
-        distance: "35 min",
+        distance: "55 min",
         feature: "A well-known pebble cape that shifts shape with the tides. One of the most visited beaches in Croatia.",
         maps: "https://maps.google.com/?q=Zlatni+Rat+Bol",
         image: "/images/bol.jpg"
@@ -225,7 +225,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
                     transition={{ ...fadeIn.transition, delay: i * 0.1 }}
                     className="group"
                   >
-                    <div className="mb-8 overflow-hidden rounded-sm">
+                    <div className="mb-8 overflow-hidden">
                       <ParallaxImage
                         src={item.image}
                         alt={item.name}
