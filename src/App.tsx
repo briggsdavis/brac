@@ -241,7 +241,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             />
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="masonry-item">
-            <ParallaxImage 
+            <ParallaxImage
               src="/siteterrace.jpg"
               alt="Site Terrace"
               aspectRatio="aspect-[3/4]"
@@ -249,8 +249,8 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.6 }} className="masonry-item">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1600"
-              alt="View"
+              src="/images/lovrecina.jpg"
+              alt="Lovrecina Beach"
               aspectRatio="aspect-[16/9]"
             />
           </motion.div>
