@@ -251,10 +251,17 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             <ParallaxImage
               src="/images/lovrecina.jpg"
               alt="Lovrecina Beach"
-              aspectRatio="aspect-[16/9]"
+              aspectRatio="aspect-[4/3]"
             />
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.8 }} className="masonry-item">
+            <ParallaxImage
+              src="/renderkitchen.jpg"
+              alt="Kitchen Render"
+              aspectRatio="aspect-[4/3]"
+            />
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ delay: 1.0 }} className="masonry-item">
             <ParallaxImage
               src="/images/multi.jpg"
               alt="Multi"
