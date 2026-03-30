@@ -13,6 +13,7 @@ const IMAGES = [
   { src: "/renderlivingtwo.jpg", alt: "Living Room Render Two", category: "render" },
   { src: "/renderstable.jpg", alt: "Stable Render", category: "render" },
   { src: "/renderterrace.jpg", alt: "Terrace Render", category: "render" },
+  { src: "/renderfront.jpg", alt: "Front Render", category: "render" },
   { src: "/sitekitchen.jpg", alt: "Kitchen Site Photo", category: "site" },
   { src: "/sitekitechenpt2.jpg", alt: "Kitchen Site Photo Two", category: "site" },
   { src: "/sitebedroom.jpg", alt: "Bedroom Site Photo", category: "site" },

@@ -6,11 +6,20 @@ import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Wave
 
 const CAROUSEL_IMAGES = [
   { src: "/sitekitchen.jpg", alt: "Kitchen, As Found" },
+  { src: "/sitekitechenpt2.jpg", alt: "Kitchen (Part 2), As Found" },
   { src: "/sitebedroom.jpg", alt: "Bedroom, As Found" },
   { src: "/sitebathroom.jpg", alt: "Bathroom, As Found" },
   { src: "/siteliving.jpg", alt: "Living Room, As Found" },
+  { src: "/sitelivingtwo.jpg", alt: "Living Room (Part 2), As Found" },
   { src: "/sitestable.jpg", alt: "The Stable, As Found" },
+  { src: "/sitestableone.jpg", alt: "The Stable (View 2), As Found" },
+  { src: "/sitestabletwo.jpg", alt: "The Stable (View 3), As Found" },
   { src: "/siteterrace.jpg", alt: "Terrace, As Found" },
+  { src: "/sitelowergarden.jpg", alt: "Lower Garden, As Found" },
+  { src: "/sitelowergardenone.jpg", alt: "Lower Garden (View 2), As Found" },
+  { src: "/siteuppergarden.jpg", alt: "Upper Garden, As Found" },
+  { src: "/siteuppergardentwo.jpg", alt: "Upper Garden (View 2), As Found" },
+  { src: "/siteroad.jpg", alt: "Road, As Found" },
 ];
 
 const SPECS = [
