@@ -25,7 +25,7 @@ const PROPERTY_STATS = [
   { icon: Car, label: 'Parking', value: 'Parking for a small car further up the road' },
   { icon: Bed, label: 'Bedrooms', value: '3 Bedrooms' },
   { icon: Maximize, label: 'Stable', value: 'Detached Stone Stable Included' },
-  { icon: Landmark, label: 'Heritage', value: 'Historic Stone Construction — 1890' },
+  { icon: Landmark, label: 'Heritage', value: 'Historic Stone Construction, 1890' },
   { icon: Leaf, label: 'Olive Grove', value: 'Private Olive Grove' },
 ];
 
@@ -126,9 +126,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       <section id="specs" className="py-32 px-6 max-w-7xl mx-auto border-b border-black/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-20">
           {[
-            { label: 'Heritage', title: 'Historic Status', desc: 'Solid stone construction from 1890. Protected village status means no new development is permitted in Dol — supply is fixed.' },
+            { label: 'Heritage', title: 'Historic Status', desc: 'Solid stone construction from 1890. Protected village status means no new development is permitted in Dol. Supply is fixed.' },
             { label: 'Proximity', title: '2.2km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
-            { label: 'Potential', title: '3-Unit Potential', desc: 'Subdivide into three independent rental units, or keep it whole as one large private home. The detached stable adds a fourth option — income unit, guest annexe, or workshop. Plans available on request.' }
+            { label: 'Potential', title: '3-Unit Potential', desc: 'Subdivide into three independent rental units, or keep it whole as one large private home. The detached stable adds a fourth option: income unit, guest annexe, or workshop. Plans available on request.' }
           ].map((spec, i) => (
             <motion.div 
               key={i}
@@ -147,7 +147,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       {/* Quick Specs CTA */}
       <section className="py-10 px-6 max-w-7xl mx-auto border-b border-black/5">
         <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-neutral-500">Full technical breakdown of the property — area, rooms, utilities, and more.</p>
+          <p className="text-sm text-neutral-500">Full technical breakdown of the property: area, rooms, utilities, and more.</p>
           <button
             onClick={() => { onNavigate('specifications'); window.scrollTo(0, 0); }}
             className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
@@ -186,7 +186,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       {/* Opportunity CTA */}
       <section className="py-10 px-6 max-w-7xl mx-auto border-b border-black/5">
         <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-neutral-500">See the investment options — short-term lets, resale, co-living, and more.</p>
+          <p className="text-sm text-neutral-500">See the investment options: short-term lets, resale, co-living, and more.</p>
           <button
             onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
             className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
@@ -202,7 +202,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           <motion.div {...fadeIn}>
             <h2 className="text-5xl font-serif mb-6">The Property</h2>
             <p className="text-neutral-500 leading-relaxed mb-8">
-              Site photos of the property as it stands today, alongside 3D renders showing what a renovation could look like — and the beaches and landscapes of Brač.
+              Site photos of the property as it stands today, alongside 3D renders showing what a renovation could look like, and the beaches and landscapes of Brač.
             </p>
             <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
               View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -288,7 +288,7 @@ function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
         <div className="col-span-1 md:col-span-2">
           <h2 className="text-2xl font-serif tracking-[0.3em] uppercase mb-6">Brač Estate</h2>
           <p className="text-neutral-500 text-sm max-w-xs">
-            A stone renovation project in Dol, Brač — for investors and renovators alike.
+            A stone renovation project in Dol, Brač, for investors and renovators alike.
           </p>
         </div>
         <div>
