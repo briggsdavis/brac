@@ -188,7 +188,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
         <div className="text-right">
           <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Asking Price</p>
           <p className="text-4xl font-serif">€143,000</p>
-          <p className="text-xs text-neutral-400 mt-1">Negotiable · As-is condition</p>
+          <p className="text-xs text-neutral-400 mt-1">As-is condition</p>
         </div>
       </motion.div>
 
@@ -220,7 +220,6 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6 }}
               className="absolute inset-0 w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
           </AnimatePresence>
 

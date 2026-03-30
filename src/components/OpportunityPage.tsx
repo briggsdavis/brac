@@ -21,8 +21,8 @@ const OPPORTUNITIES = [
     title: "Renovate and Resell",
     subtitle: "Capital Appreciation",
     objective: "Buy as a renovation project, restore to a finished standard, and resell.",
-    strategy: "New construction is not permitted in Dol due to its protected village status. This restricts supply and supports resale values for renovated properties. A well-finished stone house in this location is difficult to replicate.",
-    financialUpside: "Renovation costs on Dalmatian islands run €800–€1,100/m² for a quality finish, or €1,200–€1,800/m² for a full premium restoration; island logistics add roughly 15% on top of mainland rates. For the 166 m² main house, a quality renovation budget is in the region of €130,000–€185,000. Comparable renovated stone houses in Brač village locations sell for €350,000–€700,000; add the converted stable and Adriatic views and the upper range improves further. Croatian island property prices have risen approximately 57% in five years, with 8–12% annual appreciation on the Adriatic coast since 2022, driven by limited supply and Croatia joining the Eurozone in January 2023.",
+    strategy: "New construction is not permitted in Dol due to its protected village status. This restricts supply and supports resale values for renovated properties. A well-finished stone house in this location is difficult to replicate. Crucially, the upper house doesn't require a gut renovation — the structure is sound. A coat of paint, new furniture, and cosmetic finishing goes a long way. The deeper work sits in the cellar and stable, where the real conversion upside lies.",
+    financialUpside: "Unrestored stone properties on Brač typically sell for €150,000–€250,000. Fully restored stone houses in the same area have sold for €600,000 to €1.2M depending on finish and views.",
     target: "Buyers looking to renovate and resell.",
     image: "/images/renderfront.jpg"
   },
@@ -43,8 +43,8 @@ const OPPORTUNITIES = [
     title: "Single Family Home",
     subtitle: "Private Purchase",
     objective: "Use the full 140m² as one large connected home.",
-    strategy: "Keep the three floors open as a single residence, with separate wings for guests, children, and the main bedroom. Convert the stone stable into a guest annexe or caretaker's quarters. A pool could be added in the lower garden.",
-    lifestyleValue: "This is a renovation that can go at your own pace. The stone is already there, 130 years of it. You choose the layout, the finishes, what opens up and what stays original. The stable is a blank canvas: a workshop while you renovate, a guest annexe when you're ready. The gardens take years to establish properly, which is half the point. And when the time comes to sell, a well-finished stone house in a protected Dalmatian village holds its value.",
+    strategy: "Keep the three floors open as a single residence — separate wings for guests, children, and the main bedroom. The upper house is ready for light work only: new furniture, paint, and minor finishing. You could be living in it the same summer you buy. Convert the stone stable into a guest annexe or caretaker's quarters over time. A pool could be added in the lower garden.",
+    lifestyleValue: "Quiet village setting with no new development permitted. 5 minutes from Postira and the ferry to Split.",
     target: "Families looking for a private summer or year-round home.",
     image: "/images/family.jpg"
   },
@@ -54,8 +54,8 @@ const OPPORTUNITIES = [
     title: "Retirement Home",
     subtitle: "Year-Round Living",
     objective: "A manageable home for year-round or seasonal living.",
-    strategy: "Use the ground floor as the main living space. Add underfloor heating for winter comfort. Use the upper floors and stable for visiting family or as hobby rooms.",
-    lifestyleValue: "Dol is genuinely quiet: clean air, low traffic, farms nearby producing olive oil, wine, and lamb. The renovation can go as slowly as you like: start with the floors you'll actually use and work outward over a few years. There is no pressure to rush. It ends up exactly the way you want it, in a location that stays well off the main tourist track.",
+    strategy: "Use the ground floor as the main living space. The upper house needs no structural work — paint, furniture, and light finishing is all it takes to make it comfortable. Add underfloor heating for winter comfort. Use the upper floors and stable for visiting family or as hobby rooms.",
+    lifestyleValue: "Dol has clean air, low traffic, and is close to local farms producing olive oil, wine, and lamb. It is a quieter alternative to the more tourist-heavy coastal towns.",
     target: "Retirees from Northern Europe or North America considering a permanent or seasonal move to the EU.",
     image: "/images/retirement.jpg"
   }
@@ -129,7 +129,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
             <div className="border-l-2 border-black/10 pl-6 space-y-4">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Main House</p>
-                <p className="text-sm">Approximately 166 m² across three distinct levels of solid stone construction. Could be kept as one large family residence or subdivided into two self-contained units, ideal for short-term rentals, long-term letting, or a high-value resale after renovation.</p>
+                <p className="text-sm">Approximately 166 m² across three distinct levels of solid stone construction. The upper house is in good structural shape — the bones are solid and the stonework is intact. What it needs is largely cosmetic: fresh paint, new furniture, and a light touch-up. No structural overhaul, no major works. Could be kept as one large family residence or subdivided into two self-contained units — ideal for short-term rentals, long-term letting, or a high-value resale after renovation.</p>
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">The Stable</p>
