@@ -76,9 +76,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             aspectRatio="aspect-auto"
           />
         </div>
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-          <motion.span 
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 35%, transparent 60%)' }}></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-6 pb-20">
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -86,26 +86,18 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           >
             Brač, Croatia
           </motion.span>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif mb-10 leading-tight"
           >
             Historic <br /> Stone Estate
           </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="max-w-sm text-[10px] sm:text-xs font-light tracking-wide opacity-80 mb-10"
-          >
-            A stone house in Dol, Brač — asking €143,000. Renovate to your own design, split into rental units, or both. Three-unit subdivision potential, a private olive grove, and a detached stone stable included.
-          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <button
