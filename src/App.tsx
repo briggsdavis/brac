@@ -100,7 +100,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             transition={{ delay: 1 }}
             className="max-w-sm text-[10px] sm:text-xs font-light tracking-wide opacity-80 mb-10"
           >
-            A rare investment opportunity in the heart of Dol. Three-unit potential with panoramic Adriatic views, plus a detached stone stable with its own conversion potential.
+            A stone house in Dol, Brač — asking €143,000. Renovate to your own design, split into rental units, or both. Three-unit subdivision potential, a private olive grove, and a detached stone stable included.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -134,9 +134,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       <section id="specs" className="py-32 px-6 max-w-7xl mx-auto border-b border-black/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-20">
           {[
-            { label: 'Heritage', title: 'Historic Status', desc: 'Stone construction dating back to the 18th century. Protected village status — no new development permitted in Dol.' },
+            { label: 'Heritage', title: 'Historic Status', desc: 'Solid stone construction from 1890. Protected village status means no new development is permitted in Dol — supply is fixed.' },
             { label: 'Proximity', title: '2.2km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
-            { label: 'Yield', title: '3-Unit Potential', desc: 'Subdivision plans available for three independent units. Detached stone stable also included with its own conversion potential.' }
+            { label: 'Potential', title: '3-Unit Potential', desc: 'Subdivide into three independent rental units, or keep it whole as one large private home. The detached stable adds a fourth option — income unit, guest annexe, or workshop. Plans available on request.' }
           ].map((spec, i) => (
             <motion.div 
               key={i}
@@ -210,7 +210,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           <motion.div {...fadeIn}>
             <h2 className="text-5xl font-serif mb-6">The Property</h2>
             <p className="text-neutral-500 leading-relaxed mb-8">
-              A closer look at the property — from 3D renders of proposed renovation concepts, to on-site photography, and the stunning nearby beaches of Brač.
+              Site photos of the property as it stands today, alongside 3D renders showing what a renovation could look like — and the beaches and landscapes of Brač.
             </p>
             <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
               View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -296,7 +296,7 @@ function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
         <div className="col-span-1 md:col-span-2">
           <h2 className="text-2xl font-serif tracking-[0.3em] uppercase mb-6">Brač Estate</h2>
           <p className="text-neutral-500 text-sm max-w-xs">
-            A curated investment opportunity in Dol, Brač. 
+            A stone renovation project in Dol, Brač — for investors and renovators alike.
           </p>
         </div>
         <div>

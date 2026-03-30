@@ -5,14 +5,12 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench, ArrowRight } from "lucide-react";
 
 const CAROUSEL_IMAGES = [
-  { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600", alt: "Refurbished Interior Render" },
-  { src: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=1600", alt: "Luxury Interior Render" },
-  { src: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1600", alt: "Pool Render" },
-  { src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1600", alt: "Kitchen Render" },
-  { src: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=1600", alt: "Living Room Render" },
-  { src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1600", alt: "Exterior Stone Detail" },
-  { src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1600", alt: "Site View" },
-  { src: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1600", alt: "Adriatic View" },
+  { src: "/sitekitchen.jpg", alt: "Kitchen — As Found" },
+  { src: "/sitebedroom.jpg", alt: "Bedroom — As Found" },
+  { src: "/sitebathroom.jpg", alt: "Bathroom — As Found" },
+  { src: "/siteliving.jpg", alt: "Living Room — As Found" },
+  { src: "/sitestable.jpg", alt: "The Stable — As Found" },
+  { src: "/siteterrace.jpg", alt: "Terrace — As Found" },
 ];
 
 const SPECS = [
@@ -418,7 +416,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
           <div>
             <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Next Step</p>
             <p className="font-serif text-3xl">Explore the Opportunity</p>
-            <p className="text-sm text-neutral-500 mt-2">See investment scenarios, rental projections, and resale potential.</p>
+            <p className="text-sm text-neutral-500 mt-2">See how the property could work — as an investment, a rental, or a long-term personal project.</p>
           </div>
           <button
             onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}

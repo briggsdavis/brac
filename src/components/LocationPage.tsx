@@ -265,7 +265,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Next Step</p>
               <p className="font-serif text-3xl">Make an Enquiry</p>
-              <p className="text-sm text-neutral-500 mt-2">Reach out to arrange a viewing or request the full investment pack.</p>
+              <p className="text-sm text-neutral-500 mt-2">Reach out to arrange a viewing, ask about the renovation process, or request the full property documents.</p>
             </div>
             <button
               onClick={() => { onNavigate('contact'); window.scrollTo(0, 0); }}

@@ -11,7 +11,7 @@ const OPPORTUNITIES = [
     subtitle: "Short-Term Lets",
     objective: "Renovate the three floors as standalone units, each with an independent entrance.",
     strategy: "Each floor becomes a self-contained 1-bedroom apartment. The detached stone stable could be converted separately as a garden-level studio, providing a fourth rentable unit.",
-    financialUpside: "Stone apartments in heritage villages on Brač typically rent for €150–€250 per night during peak season. The stable unit, if converted, would add further rental income independently of the main house.",
+    financialUpside: "Comparable 1-bedroom Airbnb units on Hvar — the closest like-for-like island market — generate around €30,000/year in gross revenue, at an average of €115–€150/night and 65–75% occupancy over the season. At three units, potential gross revenue runs €60,000–€90,000/year. Operating costs typically consume 35–50% of gross (management, cleaning, platform fees, maintenance). At a €143,000 acquisition price, the yield entry point is strong before renovation costs push the total investment up.",
     target: "Investors looking for short-term rental income through Airbnb or Booking.com.",
     image: "/images/multi.jpg"
   },
@@ -22,7 +22,7 @@ const OPPORTUNITIES = [
     subtitle: "Capital Appreciation",
     objective: "Buy as a renovation project, restore to a finished standard, and resell.",
     strategy: "New construction is not permitted in Dol due to its protected village status. This restricts supply and supports resale values for renovated properties. A well-finished stone house in this location is difficult to replicate.",
-    financialUpside: "Unrestored stone properties on Brač typically sell for €150,000–€250,000. Fully restored stone houses in the same area have sold for €600,000 to €1.2M depending on finish and views.",
+    financialUpside: "Renovation costs on Dalmatian islands run €800–€1,100/m² for a quality finish, or €1,200–€1,800/m² for a full premium restoration — island logistics add roughly 15% on top of mainland rates. For the 166 m² main house, a quality renovation budget is in the region of €130,000–€185,000. Comparable renovated stone houses in Brač village locations sell for €350,000–€700,000; add the converted stable and Adriatic views and the upper range improves further. Croatian island property prices have risen approximately 57% in five years, with 8–12% annual appreciation on the Adriatic coast since 2022, driven by limited supply and Croatia joining the Eurozone in January 2023.",
     target: "Buyers looking to renovate and resell.",
     image: "/images/renderfront.jpg"
   },
@@ -33,7 +33,7 @@ const OPPORTUNITIES = [
     subtitle: "Monthly Rentals",
     objective: "Set up the property as a co-living space targeting remote workers on monthly stays.",
     strategy: "One unit functions as a shared workspace with Starlink internet, while the other two operate as private accommodation. The stable could serve as an additional private room.",
-    financialUpside: "Remote workers tend to book outside peak summer months (May, June, September, October), filling gaps in the rental calendar when short-stay tourist demand drops.",
+    financialUpside: "Monthly stays — priced at €1,200–€2,000/month for a furnished 2-bedroom unit — extend the earning window well beyond summer. Croatia introduced a dedicated digital nomad visa in 2021, attracting over 120,000 nomads annually. Bookings in May, June, September, and October fill the shoulder calendar when short-stay tourist demand drops, smoothing out the revenue curve.",
     target: "Investors targeting the remote work market following Croatia's 2023 Schengen entry.",
     image: "/images/revamp.jpg"
   },
@@ -44,7 +44,7 @@ const OPPORTUNITIES = [
     subtitle: "Private Purchase",
     objective: "Use the full 140m² as one large connected home.",
     strategy: "Keep the three floors open as a single residence — separate wings for guests, children, and the main bedroom. Convert the stone stable into a guest annexe or caretaker's quarters. A pool could be added in the lower garden.",
-    lifestyleValue: "Quiet village setting with no new development permitted. 5 minutes from Postira and the ferry to Split.",
+    lifestyleValue: "This is a renovation that can go at your own pace. The stone is already there — 130 years of it. You choose the layout, the finishes, what opens up and what stays original. The stable is a blank canvas: a workshop while you renovate, a guest annexe when you're ready. The gardens take years to establish properly, which is half the point. And when the time comes to sell, a well-finished stone house in a protected Dalmatian village holds its value.",
     target: "Families looking for a private summer or year-round home.",
     image: "/images/family.jpg"
   },
@@ -55,7 +55,7 @@ const OPPORTUNITIES = [
     subtitle: "Year-Round Living",
     objective: "A manageable home for year-round or seasonal living.",
     strategy: "Use the ground floor as the main living space. Add underfloor heating for winter comfort. Use the upper floors and stable for visiting family or as hobby rooms.",
-    lifestyleValue: "Dol has clean air, low traffic, and is close to local farms producing olive oil, wine, and lamb. It is a quieter alternative to the more tourist-heavy coastal towns.",
+    lifestyleValue: "Dol is genuinely quiet — clean air, low traffic, farms nearby producing olive oil, wine, and lamb. The renovation can go as slowly as you like: start with the floors you'll actually use and work outward over a few years. There is no pressure to rush. It ends up exactly the way you want it, in a location that stays well off the main tourist track.",
     target: "Retirees from Northern Europe or North America considering a permanent or seasonal move to the EU.",
     image: "/images/retirement.jpg"
   }
@@ -121,10 +121,10 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-24">
           <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.15 }} className="space-y-6 text-neutral-600 leading-relaxed">
             <p className="text-base font-serif italic text-neutral-800">
-              Unlock the charm of traditional Dalmatian village life with a rare renovation project in the EU-protected ethno eco village of Dol on the iconic Island of Brač — the second-largest island in the Adriatic Sea, known for historic villages, unspoiled beaches, the highest point in the Mediterranean (Vidova Gora), Mediterranean landscapes, and easy access from Split (airport and ferry).
+              A stone house in Dol, Brač — on the market for €143,000. The main house covers 166 m² across three floors of solid stone construction, built in 1890. A detached 92 m² stable is included in the sale. New construction is not permitted in Dol's protected village core, which means this kind of property — genuine stone, sea views, olive grove — cannot be replicated once it's gone. Brač is the second-largest island in the Adriatic, with an airport and daily ferry connections to Split.
             </p>
             <p className="text-sm">
-              This unique stone property offers two structures with flexible redevelopment options — perfect for investors, renovators, extended families, or dual-income living.
+              Two structures, flexible options. Subdivide the main house into three independent rental units and convert the stable for a fourth income stream — or keep the whole thing as one large home with a guest annexe, and start on the renovation you design from the ground up.
             </p>
             <div className="border-l-2 border-black/10 pl-6 space-y-4">
               <div>
@@ -257,7 +257,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
 
         {/* Final CTA */}
         <motion.section {...fadeIn} className="text-center py-20 border-t border-black/5">
-          <h3 className="text-3xl font-serif mb-8 italic">Request the full property documents.</h3>
+          <h3 className="text-3xl font-serif mb-8 italic">Ready to take a closer look?</h3>
           <a
             href="https://wa.me/251944825058"
             className="inline-block bg-black text-white px-12 py-5 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105"
