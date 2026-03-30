@@ -25,7 +25,7 @@ const PROPERTY_STATS = [
   { icon: Car, label: 'Parking', value: 'Parking for a small car further up the road' },
   { icon: Bed, label: 'Bedrooms', value: '3 Bedrooms' },
   { icon: Maximize, label: 'Stable', value: 'Detached Stone Stable Included' },
-  { icon: Landmark, label: 'Heritage', value: 'Historic Stone Construction — 1890' },
+  { icon: Landmark, label: 'Heritage', value: 'Historic Stone Construction, 1890' },
   { icon: Leaf, label: 'Olive Grove', value: 'Private Olive Grove' },
 ];
 
@@ -76,9 +76,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             aspectRatio="aspect-auto"
           />
         </div>
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-          <motion.span 
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 35%, transparent 60%)' }}></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-6 pb-20">
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -86,26 +86,18 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           >
             Brač, Croatia
           </motion.span>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-serif mb-10 leading-tight"
           >
             Historic <br /> Stone Estate
           </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="max-w-sm text-[10px] sm:text-xs font-light tracking-wide opacity-80 mb-10"
-          >
-            A rare investment opportunity in the heart of Dol. Three-unit potential with panoramic Adriatic views, plus a detached stone stable with its own conversion potential.
-          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <button
@@ -134,9 +126,9 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       <section id="specs" className="py-32 px-6 max-w-7xl mx-auto border-b border-black/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-20">
           {[
-            { label: 'Heritage', title: 'Historic Status', desc: 'Stone construction dating back to the 18th century. Protected village status — no new development permitted in Dol.' },
+            { label: 'Heritage', title: 'Historic Status', desc: 'Solid stone construction from 1890. Protected village status means no new development is permitted in Dol. Supply is fixed.' },
             { label: 'Proximity', title: '2.2km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
-            { label: 'Yield', title: '3-Unit Potential', desc: 'Subdivision plans available for three independent units. Detached stone stable also included with its own conversion potential.' }
+            { label: 'Potential', title: '3-Unit Potential', desc: 'Subdivide into three independent rental units, or keep it whole as one large private home. The detached stable adds a fourth option: income unit, guest annexe, or workshop. Plans available on request.' }
           ].map((spec, i) => (
             <motion.div 
               key={i}
@@ -155,7 +147,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       {/* Quick Specs CTA */}
       <section className="py-10 px-6 max-w-7xl mx-auto border-b border-black/5">
         <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-neutral-500">Full technical breakdown of the property — area, rooms, utilities, and more.</p>
+          <p className="text-sm text-neutral-500">Full technical breakdown of the property: area, rooms, utilities, and more.</p>
           <button
             onClick={() => { onNavigate('specifications'); window.scrollTo(0, 0); }}
             className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
@@ -194,7 +186,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       {/* Opportunity CTA */}
       <section className="py-10 px-6 max-w-7xl mx-auto border-b border-black/5">
         <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-neutral-500">See the investment options — short-term lets, resale, co-living, and more.</p>
+          <p className="text-sm text-neutral-500">See the investment options: short-term lets, resale, co-living, and more.</p>
           <button
             onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
             className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
@@ -210,7 +202,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           <motion.div {...fadeIn}>
             <h2 className="text-5xl font-serif mb-6">The Property</h2>
             <p className="text-neutral-500 leading-relaxed mb-8">
-              A closer look at the property — from 3D renders of proposed renovation concepts, to on-site photography, and the stunning nearby beaches of Brač.
+              Site photos of the property as it stands today, alongside 3D renders showing what a renovation could look like, and the beaches and landscapes of Brač.
             </p>
             <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
               View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -296,7 +288,7 @@ function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
         <div className="col-span-1 md:col-span-2">
           <h2 className="text-2xl font-serif tracking-[0.3em] uppercase mb-6">Brač Estate</h2>
           <p className="text-neutral-500 text-sm max-w-xs">
-            A curated investment opportunity in Dol, Brač. 
+            A stone renovation project in Dol, Brač, for investors and renovators alike.
           </p>
         </div>
         <div>
