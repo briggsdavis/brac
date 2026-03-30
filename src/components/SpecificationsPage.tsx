@@ -5,14 +5,12 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench, ArrowRight } from "lucide-react";
 
 const CAROUSEL_IMAGES = [
-  { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600", alt: "Refurbished Interior Render" },
-  { src: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=1600", alt: "Luxury Interior Render" },
-  { src: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1600", alt: "Pool Render" },
-  { src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1600", alt: "Kitchen Render" },
-  { src: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=1600", alt: "Living Room Render" },
-  { src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1600", alt: "Exterior Stone Detail" },
-  { src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1600", alt: "Site View" },
-  { src: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1600", alt: "Adriatic View" },
+  { src: "/sitekitchen.jpg", alt: "Kitchen, As Found" },
+  { src: "/sitebedroom.jpg", alt: "Bedroom, As Found" },
+  { src: "/sitebathroom.jpg", alt: "Bathroom, As Found" },
+  { src: "/siteliving.jpg", alt: "Living Room, As Found" },
+  { src: "/sitestable.jpg", alt: "The Stable, As Found" },
+  { src: "/siteterrace.jpg", alt: "Terrace, As Found" },
 ];
 
 const SPECS = [
@@ -56,7 +54,7 @@ const FLOORS = [
           "Natural sea breeze throughout",
           "Views over the valley and village",
           "Abundant natural light",
-          "Private top-floor terrace — Adriatic views",
+          "Private top-floor terrace, Adriatic views",
           "Outdoor staircase connecting both floors",
         ],
         image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=900",
@@ -64,9 +62,9 @@ const FLOORS = [
       },
       {
         heading: "The Upper Garden",
-        description: "Above the house, the upper garden climbs the hillside and feels entirely private. A terrace dining area sits directly in front with uninterrupted views of the ocean — perfect for long Mediterranean evenings. A solid tool shed of approximately 10 m² provides serious storage alongside a dedicated grilling and barbecue area. The garden is generously planted — lavender, an olive tree, and a fig tree give it a mature, established feel. Planting spaces are abundant throughout.",
+        description: "Above the house, the upper garden climbs the hillside and feels entirely private. A terrace dining area sits directly in front with uninterrupted views of the ocean, perfect for long Mediterranean evenings. A solid tool shed of approximately 10 m² provides serious storage alongside a dedicated grilling and barbecue area. The garden is generously planted, with lavender, an olive tree, and a fig tree give it a mature, established feel. Planting spaces are abundant throughout.",
         rooms: [
-          "Terrace dining area — direct Adriatic views",
+          "Terrace dining area, direct Adriatic views",
           "Tool shed (~10 m²)",
           "Grilling / barbecue area",
           "Mature olive and fig trees",
@@ -87,7 +85,7 @@ const FLOORS = [
     subSections: [
       {
         heading: "The Cellar",
-        description: "The cellar sits at ground level beneath the upper house and covers approximately 40 m². The structure is solid and full of character. There is a window, and the entrance is framed by a set of large, heavy original doors. Water access is already in place. Currently used for tool storage, but with planning and renovation this space could be converted into a self-contained studio or one-bedroom unit — entirely independent from the floors above.",
+        description: "The cellar sits at ground level beneath the upper house and covers approximately 40 m². The structure is solid and full of character. There is a window, and the entrance is framed by a set of large, heavy original doors. Water access is already in place. Currently used for tool storage, but with planning and renovation this space could be converted into a self-contained studio or one-bedroom unit, entirely independent from the floors above.",
         rooms: [
           "~40 m²",
           "Window",
@@ -95,7 +93,7 @@ const FLOORS = [
           "Water access in place",
           "Currently used for tool storage",
           "Ground-level independent access",
-          "Conversion potential — studio or 1-bed unit",
+          "Conversion potential: studio or 1-bed unit",
         ],
         image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=900",
         alt: "The Cellar",
@@ -105,18 +103,18 @@ const FLOORS = [
   {
     number: "03",
     label: "The Stable",
-    brief: "A detached two-floor stone ruin — 92 m² total — with exceptional independent conversion potential.",
+    brief: "A detached two-floor stone ruin, 92 m² total, with exceptional independent conversion potential.",
     subSections: [
       {
         heading: "The Stable",
-        description: "The stable is a detached stone structure spread across two floors, each measuring 46 m² — giving a total footprint of 92 m². It is currently a ruin, but a substantial and authentic one: the stonework is historic, solidly constructed, and fully in keeping with the character of the rest of the property. A large door connects it to the lower garden, and the structure is fully independent from the main house. With the right renovation, this becomes a generous independent unit — a guest annexe, a holiday let, or a second home in its own right.",
+        description: "The stable is a detached stone structure spread across two floors, each measuring 46 m², giving a total footprint of 92 m². It is currently a ruin, but a substantial and authentic one: the stonework is historic, solidly constructed, and fully in keeping with the character of the rest of the property. A large door connects it to the lower garden, and the structure is fully independent from the main house. With the right renovation, this becomes a generous independent unit: a guest annexe, a holiday let, or a second home in its own right.",
         rooms: [
           "46 m² per floor · 92 m² total",
           "Two floors",
           "Detached from main house",
           "Authentic historic stone construction",
           "Large door connecting to lower garden",
-          "Currently a ruin — stone shell intact",
+          "Currently a ruin, stone shell intact",
           "1-bed or 2-bed conversion potential",
           "Fully independent access",
         ],
@@ -132,12 +130,12 @@ const FLOORS = [
     subSections: [
       {
         heading: "Upper & Lower Gardens",
-        description: "The property has two distinct gardens — upper and lower — connected by a long stone staircase that runs through the heart of the plot. The upper garden rises into the hillside behind the house and features a terrace dining area with sea views, a tool shed, a grilling area, and mature planting including lavender, an olive tree, and a fig tree. The lower garden sits in front of the cellar and stable — sheltered and private, with views of both the sea and the mountains. Gates can be fitted to the connecting staircase to divide the property cleanly into separate units, ideal for rental management. Both gardens have generous planting spaces waiting to be filled.",
+        description: "The property has two distinct gardens, upper and lower, connected by a long stone staircase that runs through the heart of the plot. The upper garden rises into the hillside behind the house and features a terrace dining area with sea views, a tool shed, a grilling area, and mature planting including lavender, an olive tree, and a fig tree. The lower garden sits in front of the cellar and stable, sheltered and private, with views of both the sea and the mountains. Gates can be fitted to the connecting staircase to divide the property cleanly into separate units, ideal for rental management. Both gardens have generous planting spaces waiting to be filled.",
         rooms: [
           "Upper and lower gardens",
           "Long stone staircase connecting both levels",
           "Gate points for property subdivision",
-          "Terrace dining area (upper) — Adriatic views",
+          "Terrace dining area (upper), Adriatic views",
           "Tool shed and grilling area (upper)",
           "Sea and mountain views from lower garden",
           "Lavender, olive tree, fig tree",
@@ -314,7 +312,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
               transition={{ ...fadeIn.transition, delay: i * 0.1 }}
               className="border border-black/5 rounded-2xl overflow-hidden"
             >
-              {/* Floor header — always visible */}
+              {/* Floor header - always visible */}
               <button
                 className="w-full flex items-center gap-6 p-8 text-left hover:bg-neutral-50 transition-colors group"
                 onClick={() => setExpandedFloor(expandedFloor === i ? null : i)}
@@ -418,7 +416,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
           <div>
             <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Next Step</p>
             <p className="font-serif text-3xl">Explore the Opportunity</p>
-            <p className="text-sm text-neutral-500 mt-2">See investment scenarios, rental projections, and resale potential.</p>
+            <p className="text-sm text-neutral-500 mt-2">See how the property could work: as an investment, a rental, or a long-term personal project.</p>
           </div>
           <button
             onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
