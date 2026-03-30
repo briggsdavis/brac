@@ -3,6 +3,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench, ArrowRight } from "lucide-react";
+import ParallaxImage from "./ParallaxImage";
 
 const CAROUSEL_IMAGES = [
   { src: "/sitekitchen.jpg", alt: "Kitchen, As Found" },
@@ -168,6 +169,7 @@ const fadeIn = {
 export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const [galleryLightboxIndex, setGalleryLightboxIndex] = useState(-1);
   const [expandedFloor, setExpandedFloor] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -277,6 +279,40 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
         index={lightboxIndex}
         open={lightboxIndex >= 0}
         close={() => setLightboxIndex(-1)}
+        slides={CAROUSEL_IMAGES}
+      />
+
+      {/* Site Photo Gallery */}
+      <motion.div {...fadeIn} className="mb-24">
+        <div className="mb-10">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-3 block">As Found</span>
+          <h3 className="text-3xl font-serif">Site Photos</h3>
+        </div>
+        <div className="masonry-grid masonry-grid-4">
+          {CAROUSEL_IMAGES.map((img, i) => (
+            <motion.div
+              key={img.src}
+              {...fadeIn}
+              transition={{ ...fadeIn.transition, delay: i * 0.04 }}
+              className="masonry-item group cursor-pointer overflow-hidden bg-neutral-100 relative"
+              onClick={() => setGalleryLightboxIndex(i)}
+            >
+              <ParallaxImage
+                src={img.src}
+                alt={img.alt}
+                aspectRatio={i % 3 === 0 ? "aspect-[4/5]" : i % 3 === 1 ? "aspect-square" : "aspect-[3/2]"}
+                className="w-full"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]" />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      <Lightbox
+        index={galleryLightboxIndex}
+        open={galleryLightboxIndex >= 0}
+        close={() => setGalleryLightboxIndex(-1)}
         slides={CAROUSEL_IMAGES}
       />
 
