@@ -156,12 +156,12 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
       </section>
 
       {/* Fast Travel Sidebar */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col gap-8 items-end">
+      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col gap-4 items-end">
         {OPPORTUNITIES.map((opt) => (
           <button
             key={opt.id}
             onClick={() => scrollToSection(opt.id)}
-            className="group flex items-center transition-all"
+            className="group flex items-center px-3 py-3 cursor-pointer transition-all"
           >
             <div className={`h-px transition-all duration-500 ${
               activeSection === opt.id ? "w-12 bg-black" : "w-6 bg-neutral-300 group-hover:bg-black group-hover:w-8"

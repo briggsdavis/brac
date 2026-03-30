@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ExternalLink, ArrowRight } from 'lucide-react';
-import { motion, useScroll, useSpring } from 'motion/react';
+import { motion } from 'motion/react';
 import ParallaxImage from './ParallaxImage';
 
 const LOCATION_DATA = [
@@ -129,13 +129,6 @@ const fadeIn = {
 
 export default function LocationPage({ onNavigate }: { onNavigate?: (page: string) => void }) {
   const [activeSection, setActiveSection] = useState(LOCATION_DATA[0].id);
-  const { scrollYProgress } = useScroll();
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   useEffect(() => {
     const handleScroll = () => {
       const sections = LOCATION_DATA.map(cat => document.getElementById(cat.id));
@@ -176,22 +169,16 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
     <div className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex">
       {/* Sidebar Navigation */}
       <div className="hidden lg:block fixed left-12 top-1/2 -translate-y-1/2 z-40">
-        <div className="flex flex-col gap-8 relative">
-          <motion.div 
-            className="absolute left-0 top-0 w-[1px] bg-black origin-top h-full"
-            style={{ scaleY }}
-          />
-          <div className="absolute left-0 top-0 w-[1px] bg-neutral-200 h-full -z-10" />
-          
+        <div className="flex flex-col gap-4">
           {LOCATION_DATA.map((cat) => (
             <button
               key={cat.id}
               onClick={() => scrollToSection(cat.id)}
-              className="group relative flex items-center py-1"
+              className="group relative flex items-center px-3 py-3 cursor-pointer"
             >
-              <motion.div 
+              <motion.div
                 className="h-[1px] bg-black transition-all duration-500"
-                animate={{ 
+                animate={{
                   width: activeSection === cat.id ? 40 : 12,
                   opacity: activeSection === cat.id ? 1 : 0.3
                 }}
