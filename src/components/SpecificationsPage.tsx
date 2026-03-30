@@ -5,14 +5,21 @@ import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench, ArrowRight } from "lucide-react";
 
 const CAROUSEL_IMAGES = [
-  { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600", alt: "Refurbished Interior Render" },
-  { src: "https://images.unsplash.com/photo-1600607687940-47a0f9259017?auto=format&fit=crop&q=80&w=1600", alt: "Luxury Interior Render" },
-  { src: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1600", alt: "Pool Render" },
-  { src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1600", alt: "Kitchen Render" },
-  { src: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=1600", alt: "Living Room Render" },
-  { src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1600", alt: "Exterior Stone Detail" },
-  { src: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1600", alt: "Site View" },
-  { src: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1600", alt: "Adriatic View" },
+  { src: "/sitekitchen.jpg", alt: "Kitchen Site Photo" },
+  { src: "/sitekitechenpt2.jpg", alt: "Kitchen Site Photo Two" },
+  { src: "/sitebedroom.jpg", alt: "Bedroom Site Photo" },
+  { src: "/sitebathroom.jpg", alt: "Bathroom Site Photo" },
+  { src: "/siteliving.jpg", alt: "Living Room Site Photo" },
+  { src: "/sitelivingtwo.jpg", alt: "Living Room Site Photo Two" },
+  { src: "/sitestable.jpg", alt: "Stable Site Photo" },
+  { src: "/sitestableone.jpg", alt: "Stable Site Photo One" },
+  { src: "/sitestabletwo.jpg", alt: "Stable Site Photo Two" },
+  { src: "/siteterrace.jpg", alt: "Terrace Site Photo" },
+  { src: "/sitelowergarden.jpg", alt: "Lower Garden Site Photo" },
+  { src: "/sitelowergardenone.jpg", alt: "Lower Garden Site Photo One" },
+  { src: "/siteuppergarden.jpg", alt: "Upper Garden Site Photo" },
+  { src: "/siteuppergardentwo.jpg", alt: "Upper Garden Site Photo Two" },
+  { src: "/siteroad.jpg", alt: "Road Site Photo" },
 ];
 
 const SPECS = [
@@ -222,7 +229,6 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6 }}
               className="absolute inset-0 w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
           </AnimatePresence>
 
