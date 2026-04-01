@@ -204,7 +204,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             <p className="text-neutral-500 leading-relaxed mb-8">
               Site photos of the property as it stands today, alongside 3D renders showing what a renovation could look like, and the beaches and landscapes of Brač.
             </p>
-            <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
+            <button onClick={() => onNavigateToGallery('site')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
               View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
             </button>
           </motion.div>
