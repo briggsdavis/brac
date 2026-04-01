@@ -127,7 +127,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-20">
           {[
             { label: 'Heritage', title: 'Historic Status', desc: 'Solid stone construction from 1890. Protected village status means no new development is permitted in Dol. Supply is fixed.' },
-            { label: 'Proximity', title: '2.2km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
+            { label: 'Proximity', title: '3.4km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
             { label: 'Potential', title: '3-Unit Potential', desc: 'Subdivide into three independent rental units, or keep it whole as one large private home. The detached stable adds a fourth option: income unit, guest annexe, or workshop. Plans available on request.' }
           ].map((spec, i) => (
             <motion.div 
