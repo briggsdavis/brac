@@ -127,7 +127,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-20">
           {[
             { label: 'Heritage', title: 'Historic Status', desc: 'Solid stone construction from 1890. Protected village status means no new development is permitted in Dol. Supply is fixed.' },
-            { label: 'Proximity', title: '2.2km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
+            { label: 'Proximity', title: '3.4km to Beach', desc: 'Short drive to the Adriatic coast. Postira town and its ferry port are 5 minutes away.' },
             { label: 'Potential', title: '3-Unit Potential', desc: 'Subdivide into three independent rental units, or keep it whole as one large private home. The detached stable adds a fourth option: income unit, guest annexe, or workshop. Plans available on request.' }
           ].map((spec, i) => (
             <motion.div 
@@ -204,7 +204,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             <p className="text-neutral-500 leading-relaxed mb-8">
               Site photos of the property as it stands today, alongside 3D renders showing what a renovation could look like, and the beaches and landscapes of Brač.
             </p>
-            <button onClick={() => onNavigateToGallery('render')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
+            <button onClick={() => onNavigateToGallery('site')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
               View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
             </button>
           </motion.div>

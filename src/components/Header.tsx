@@ -14,11 +14,11 @@ interface HeaderProps {
 }
 
 const MENU_IMAGES: Record<string, string> = {
-  home: "https://images.unsplash.com/photo-1544551763-47a0159c963f?auto=format&fit=crop&q=80&w=1000",
-  gallery: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1000",
-  location: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=1000",
-  opportunity: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&q=80&w=1000",
-  specifications: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000",
+  home: "/images/bol.jpg",
+  gallery: "/images/lovrecina.jpg",
+  location: "/images/brac.jpg",
+  opportunity: "/images/postira.jpg",
+  specifications: "/images/vidovagora.jpg",
 };
 
 export default function Header({ onNavigate, currentPage }: HeaderProps) {
@@ -154,7 +154,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               </nav>
             </div>
 
-            <div className="hidden lg:flex flex-1 bg-neutral-50 relative overflow-hidden">
+            <div className="hidden lg:flex flex-1 bg-neutral-50 relative overflow-hidden items-center justify-center">
               <AnimatePresence mode="wait">
                 {hoveredItem && (
                   <motion.img
@@ -164,7 +164,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="relative w-[60%] h-[60%] object-cover"
                     referrerPolicy="no-referrer"
                   />
                 )}
