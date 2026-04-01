@@ -154,7 +154,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               </nav>
             </div>
 
-            <div className="hidden lg:flex flex-1 bg-neutral-50 relative overflow-hidden">
+            <div className="hidden lg:flex flex-1 bg-neutral-50 relative overflow-hidden items-center justify-center">
               <AnimatePresence mode="wait">
                 {hoveredItem && (
                   <motion.img
@@ -164,7 +164,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="relative w-[60%] h-[60%] object-cover"
                     referrerPolicy="no-referrer"
                   />
                 )}
