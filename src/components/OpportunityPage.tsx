@@ -220,7 +220,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: 0.2 }}
               className={i % 2 === 0 ? "lg:order-2" : "lg:order-1"}
@@ -233,6 +233,13 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
                   className="w-full transition-all duration-1000"
                 />
                 <div className="absolute inset-0 bg-black/10 transition-colors duration-1000" />
+                {opt.image.includes('render') && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="bg-amber-400 text-amber-950 text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 rounded shadow-md">
+                      3D Render — Not the property
+                    </span>
+                  </div>
+                )}
               </div>
             </motion.div>
           </section>
