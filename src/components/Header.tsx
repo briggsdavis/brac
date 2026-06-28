@@ -61,7 +61,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
 
   const handleNav = (id: string) => {
     onNavigate(id);
-    setIsMenuOpen(false);
+    // Leave the menu in place while the page-transition curtain wipes up to
+    // cover the screen, then close it once it's hidden behind the curtain — so
+    // only the wipe is visible, not the menu retracting at the same time.
+    window.setTimeout(() => setIsMenuOpen(false), 520);
   };
 
   // Show the hovered page's image, or fall back to the current page's image
