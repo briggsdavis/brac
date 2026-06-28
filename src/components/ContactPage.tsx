@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { RevealText } from "./Reveal";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -13,7 +14,7 @@ export default function ContactPage() {
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center">
       <motion.div {...fadeIn} className="mb-20 text-center">
         <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-400 mb-4 block">Get in Touch</span>
-        <h2 className="text-5xl sm:text-7xl font-serif mb-8">Direct Inquiry</h2>
+        <h2 className="text-5xl sm:text-7xl font-serif mb-8"><RevealText>Direct Inquiry</RevealText></h2>
         <p className="max-w-2xl mx-auto text-neutral-500 leading-relaxed">
           For property details, documentation, or to arrange a site visit, get in touch directly.
         </p>
@@ -37,7 +38,7 @@ export default function ContactPage() {
             <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full animate-pulse"></div>
           </div>
           
-          <h3 className="text-3xl font-serif mb-2">Maxwell Briggs</h3>
+          <h3 className="text-3xl font-serif mb-2"><RevealText>Maxwell Briggs</RevealText></h3>
           <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-8 font-bold">Investment Director</p>
           
           <div className="space-y-6 w-full max-w-md">

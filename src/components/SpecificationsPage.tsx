@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { motion, AnimatePresence } from "motion/react";
+import { RevealText } from "./Reveal";
 import { ChevronLeft, ChevronRight, ChevronDown, Download, Maximize, Trees, Waves, Mountain, Sun, Car, Bath, Bed, Utensils, ShieldCheck, Landmark, Ruler, MapPin, Zap, Droplets, Wrench, ArrowRight } from "lucide-react";
 import ParallaxImage from "./ParallaxImage";
 
@@ -194,7 +195,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
       <motion.div {...fadeIn} className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
           <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-400 mb-4 block">Technical Overview</span>
-          <h2 className="text-5xl sm:text-6xl font-serif leading-tight">Specifications</h2>
+          <h2 className="text-5xl sm:text-6xl font-serif leading-tight"><RevealText>Specifications</RevealText></h2>
         </div>
         <div className="text-right">
           <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-1">Asking Price</p>
@@ -286,7 +287,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
       <motion.div {...fadeIn} className="mb-24">
         <div className="mb-10">
           <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-3 block">As Found</span>
-          <h3 className="text-3xl font-serif">Site Photos</h3>
+          <h3 className="text-3xl font-serif"><RevealText>Site Photos</RevealText></h3>
         </div>
         <div className="masonry-grid masonry-grid-4">
           {CAROUSEL_IMAGES.map((img, i) => (
@@ -320,7 +321,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
       <motion.div {...fadeIn} className="mb-24">
         <div className="mb-10">
           <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-3 block">By the Numbers</span>
-          <h3 className="text-3xl font-serif">Property Details</h3>
+          <h3 className="text-3xl font-serif"><RevealText>Property Details</RevealText></h3>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {SPECS.map((spec, i) => (
@@ -345,7 +346,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
       <motion.div {...fadeIn} className="mb-24">
         <div className="mb-10">
           <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-3 block">Layout</span>
-          <h3 className="text-3xl font-serif">Floor by Floor</h3>
+          <h3 className="text-3xl font-serif"><RevealText>Floor by Floor</RevealText></h3>
         </div>
 
         <div className="space-y-4">
@@ -463,7 +464,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
             <p className="text-sm text-neutral-500 mt-2">See how the property could work: as an investment, a rental, or a long-term personal project.</p>
           </div>
           <button
-            onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
+            onClick={() => { onNavigate('opportunity'); }}
             className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
           >
             View Opportunities <ArrowRight className="w-4 h-4" />

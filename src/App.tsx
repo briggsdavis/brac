@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from './components/Header';
 import GalleryPage from './components/GalleryPage';
 import LocationPage from './components/LocationPage';
@@ -6,8 +6,12 @@ import OpportunityPage from './components/OpportunityPage';
 import ContactPage from './components/ContactPage';
 import SpecificationsPage from './components/SpecificationsPage';
 import ParallaxImage from './components/ParallaxImage';
+import { RevealText } from './components/Reveal';
+import { initSmoothScroll, scrollToTop, scrollToElement } from './lib/scroll';
 import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bed, Landmark, Leaf } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useAnimationControls } from 'motion/react';
+
+const WIPE_EASE = [0.76, 0, 0.24, 1] as const;
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -32,32 +36,78 @@ const PROPERTY_STATS = [
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [galleryFilter, setGalleryFilter] = useState<'all' | 'render' | 'site'>('all');
+  const wipeControls = useAnimationControls();
+  const isTransitioning = useRef(false);
+
+  useEffect(() => initSmoothScroll(), []);
+
+  // White panel wipes up to cover the screen (favicon centred), holds briefly,
+  // then wipes up again off the top to reveal the freshly-swapped page.
+  const runTransition = async (apply: () => void) => {
+    if (isTransitioning.current) return;
+    isTransitioning.current = true;
+    await wipeControls.start({ y: '0%', transition: { duration: 0.5, ease: WIPE_EASE } });
+    apply();
+    scrollToTop(true);
+    await new Promise((resolve) => setTimeout(resolve, 450));
+    await wipeControls.start({ y: '-100%', transition: { duration: 0.55, ease: WIPE_EASE } });
+    wipeControls.set({ y: '100%' });
+    isTransitioning.current = false;
+  };
+
+  const navigate = (page: string) => {
+    if (page === currentPage) {
+      scrollToTop();
+      return;
+    }
+    runTransition(() => setCurrentPage(page));
+  };
 
   const navigateToGallery = (filter: 'all' | 'render' | 'site' = 'all') => {
-    setGalleryFilter(filter);
-    setCurrentPage('gallery');
-    window.scrollTo(0, 0);
+    if (currentPage === 'gallery') {
+      setGalleryFilter(filter);
+      scrollToTop();
+      return;
+    }
+    runTransition(() => {
+      setGalleryFilter(filter);
+      setCurrentPage('gallery');
+    });
   };
 
   const renderPage = () => {
     switch (currentPage) {
       case 'gallery': return <GalleryPage initialFilter={galleryFilter} />;
-      case 'location': return <LocationPage onNavigate={setCurrentPage} />;
-      case 'opportunity': return <OpportunityPage onNavigate={setCurrentPage} />;
-      case 'specifications': return <SpecificationsPage onNavigate={setCurrentPage} />;
+      case 'location': return <LocationPage onNavigate={navigate} />;
+      case 'opportunity': return <OpportunityPage onNavigate={navigate} />;
+      case 'specifications': return <SpecificationsPage onNavigate={navigate} />;
       case 'contact': return <ContactPage />;
-      default: return <Home onNavigateToGallery={navigateToGallery} onNavigate={setCurrentPage} />;
+      default: return <Home onNavigateToGallery={navigateToGallery} onNavigate={navigate} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <Header onNavigate={setCurrentPage} currentPage={currentPage} />
+      <Header onNavigate={navigate} currentPage={currentPage} />
       <main>
         {renderPage()}
       </main>
       <motion.div {...fadeIn}>
-        <Footer onNavigate={setCurrentPage} />
+        <Footer onNavigate={navigate} />
+      </motion.div>
+
+      {/* Page transition curtain — wipes up to cover, then up again to reveal */}
+      <motion.div
+        initial={{ y: '100%' }}
+        animate={wipeControls}
+        className="fixed inset-0 z-[100] bg-white flex items-center justify-center"
+        style={{ willChange: 'transform' }}
+      >
+        <img
+          src="/images/bracfav.jpg"
+          alt="Brač Estate"
+          className="w-40 h-40 object-contain"
+        />
       </motion.div>
     </div>
   );
@@ -92,7 +142,8 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             transition={{ delay: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-serif mb-10 leading-tight"
           >
-            Historic <br /> Stone Estate
+            <RevealText>Historic</RevealText>
+            <RevealText delay={0.1}>Stone Estate</RevealText>
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -101,16 +152,13 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             className="flex flex-col sm:flex-row gap-4"
           >
             <button
-              onClick={() => {
-                const el = document.getElementById('specs');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => scrollToElement('#specs')}
               className="border border-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-black transition-all"
             >
               Explore Details
             </button>
             <button
-              onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
+              onClick={() => { onNavigate('opportunity'); }}
               className="bg-white text-black px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-200 transition-all"
             >
               View Opportunity
@@ -137,7 +185,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
               className="text-center md:text-left group cursor-default"
             >
               <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-4 block group-hover:text-black transition-colors">{spec.label}</span>
-              <h3 className="text-3xl font-serif italic mb-4 group-hover:translate-x-2 transition-transform">{spec.title}</h3>
+              <h3 className="text-3xl font-serif italic mb-4 group-hover:translate-x-2 transition-transform"><RevealText delay={i * 0.1}>{spec.title}</RevealText></h3>
               <p className="text-sm text-neutral-500 leading-relaxed">{spec.desc}</p>
             </motion.div>
           ))}
@@ -149,7 +197,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
         <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-neutral-500">Full technical breakdown of the property: area, rooms, utilities, and more.</p>
           <button
-            onClick={() => { onNavigate('specifications'); window.scrollTo(0, 0); }}
+            onClick={() => { onNavigate('specifications'); }}
             className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
           >
             View Full Specifications <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -162,7 +210,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="mb-16 text-center md:text-left">
             <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-4 block">The Estate</span>
-            <h2 className="text-4xl font-serif mb-6">Property Details</h2>
+            <h2 className="text-4xl font-serif mb-6"><RevealText>Property Details</RevealText></h2>
           </motion.div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -188,7 +236,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
         <motion.div {...fadeIn} className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-neutral-500">See the investment options: short-term lets, resale, co-living, and more.</p>
           <button
-            onClick={() => { onNavigate('opportunity'); window.scrollTo(0, 0); }}
+            onClick={() => { onNavigate('opportunity'); }}
             className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group flex-shrink-0"
           >
             Explore the Opportunity <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -200,7 +248,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
       <section className="py-32 px-6 max-w-7xl mx-auto">
         <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div {...fadeIn}>
-            <h2 className="text-5xl font-serif mb-6">The Property</h2>
+            <h2 className="text-5xl font-serif mb-6"><RevealText>The Property</RevealText></h2>
             <p className="text-neutral-500 leading-relaxed mb-8">
               Site photos of the property as it currently stands, alongside computer-generated 3D renders showing what a renovation <em>could</em> look like — renders do not show the actual property. Beaches and landscapes of Brač are also included.
             </p>
@@ -273,13 +321,13 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <button
-              onClick={() => { onNavigate('location'); window.scrollTo(0, 0); }}
+              onClick={() => { onNavigate('location'); }}
               className="border border-black px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-50 transition-all"
             >
               View Location
             </button>
             <button
-              onClick={() => { onNavigate('contact'); window.scrollTo(0, 0); }}
+              onClick={() => { onNavigate('contact'); }}
               className="bg-black text-white px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all"
             >
               Contact Us
@@ -296,7 +344,7 @@ function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
     <footer className="bg-neutral-50 py-20 px-6 border-t border-black/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         <div className="col-span-1 md:col-span-2">
-          <h2 className="text-2xl font-serif tracking-[0.3em] uppercase mb-6">Brač Estate</h2>
+          <h2 className="text-2xl font-serif tracking-[0.3em] uppercase mb-6"><RevealText>Brač Estate</RevealText></h2>
           <p className="text-neutral-500 text-sm max-w-xs">
             A stone renovation project in Dol, Brač, for investors and renovators alike.
           </p>
