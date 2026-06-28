@@ -16,7 +16,9 @@ interface RevealTextProps {
  */
 export function RevealText({ children, delay = 0, className }: RevealTextProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
+  // Hold the trigger until the element has risen ~30% up from the bottom edge,
+  // so the animation plays where it can actually be seen rather than off-screen.
+  const inView = useInView(ref, { once: true, margin: '0px 0px -30% 0px' });
   return (
     <span ref={ref} className={`block overflow-hidden ${className ?? ''}`}>
       <motion.span

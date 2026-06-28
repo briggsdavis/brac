@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from './components/Header';
 import GalleryPage from './components/GalleryPage';
 import LocationPage from './components/LocationPage';
@@ -7,6 +7,7 @@ import ContactPage from './components/ContactPage';
 import SpecificationsPage from './components/SpecificationsPage';
 import ParallaxImage from './components/ParallaxImage';
 import { RevealText } from './components/Reveal';
+import { initSmoothScroll, scrollToTop, scrollToElement } from './lib/scroll';
 import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bed, Landmark, Leaf } from 'lucide-react';
 import { motion, useAnimationControls } from 'motion/react';
 
@@ -38,6 +39,8 @@ export default function App() {
   const wipeControls = useAnimationControls();
   const isTransitioning = useRef(false);
 
+  useEffect(() => initSmoothScroll(), []);
+
   // White panel wipes up to cover the screen (favicon centred), holds briefly,
   // then wipes up again off the top to reveal the freshly-swapped page.
   const runTransition = async (apply: () => void) => {
@@ -45,7 +48,7 @@ export default function App() {
     isTransitioning.current = true;
     await wipeControls.start({ y: '0%', transition: { duration: 0.5, ease: WIPE_EASE } });
     apply();
-    window.scrollTo(0, 0);
+    scrollToTop(true);
     await new Promise((resolve) => setTimeout(resolve, 450));
     await wipeControls.start({ y: '-100%', transition: { duration: 0.55, ease: WIPE_EASE } });
     wipeControls.set({ y: '100%' });
@@ -54,7 +57,7 @@ export default function App() {
 
   const navigate = (page: string) => {
     if (page === currentPage) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollToTop();
       return;
     }
     runTransition(() => setCurrentPage(page));
@@ -63,7 +66,7 @@ export default function App() {
   const navigateToGallery = (filter: 'all' | 'render' | 'site' = 'all') => {
     if (currentPage === 'gallery') {
       setGalleryFilter(filter);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollToTop();
       return;
     }
     runTransition(() => {
@@ -103,7 +106,7 @@ export default function App() {
         <img
           src="/images/bracfav.jpg"
           alt="Brač Estate"
-          className="w-20 h-20 rounded-full object-cover shadow-lg"
+          className="w-40 h-40 object-contain"
         />
       </motion.div>
     </div>
@@ -149,10 +152,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
             className="flex flex-col sm:flex-row gap-4"
           >
             <button
-              onClick={() => {
-                const el = document.getElementById('specs');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => scrollToElement('#specs')}
               className="border border-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-black transition-all"
             >
               Explore Details

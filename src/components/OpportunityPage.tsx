@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import ParallaxImage from "./ParallaxImage";
 import { RevealText } from "./Reveal";
+import { scrollToElement } from "../lib/scroll";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
@@ -93,19 +94,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 100;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+    scrollToElement(`#${id}`, 100);
   };
 
   return (

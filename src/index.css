@@ -49,3 +49,21 @@ h1, h2, h3, h4, .serif {
   break-inside: avoid;
   margin-bottom: 1.5rem;
 }
+
+/* Lenis smooth scroll (recommended baseline) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}

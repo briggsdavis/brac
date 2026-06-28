@@ -10,7 +10,9 @@ interface ParallaxImageProps {
 
 export default function ParallaxImage({ src, alt, className, aspectRatio = "aspect-video" }: ParallaxImageProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
+  // Hold the wipe until the image is ~30% up from the bottom edge so it plays
+  // in view rather than finishing before it scrolls into sight.
+  const inView = useInView(ref, { once: true, margin: '0px 0px -30% 0px' });
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
