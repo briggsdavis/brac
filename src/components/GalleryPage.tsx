@@ -3,6 +3,7 @@ import "yet-another-react-lightbox/styles.css";
 import { useState } from "react";
 import { motion } from "motion/react";
 import ParallaxImage from "./ParallaxImage";
+import { RevealText } from "./Reveal";
 
 const IMAGES = [
   { src: "/renderbedroom.jpg", alt: "Bedroom Render", category: "render" },
@@ -47,7 +48,7 @@ export default function GalleryPage({ initialFilter = "all" }: { initialFilter?:
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
       <motion.div {...fadeIn} className="mb-16 text-center">
-        <h2 className="text-5xl font-serif mb-8">Gallery</h2>
+        <h2 className="text-5xl font-serif mb-8"><RevealText>Gallery</RevealText></h2>
 
         <div className="flex justify-center gap-12 mb-12">
           {[

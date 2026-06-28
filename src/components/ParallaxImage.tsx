@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, useInView } from "motion/react";
 
 interface ParallaxImageProps {
   src: string;
@@ -10,6 +10,7 @@ interface ParallaxImageProps {
 
 export default function ParallaxImage({ src, alt, className, aspectRatio = "aspect-video" }: ParallaxImageProps) {
   const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -18,7 +19,13 @@ export default function ParallaxImage({ src, alt, className, aspectRatio = "aspe
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative overflow-hidden group ${aspectRatio} ${className}`}>
+    <motion.div
+      ref={ref}
+      initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+      animate={{ clipPath: inView ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)" }}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative overflow-hidden group ${aspectRatio} ${className}`}
+    >
       <motion.img
         style={{ y, scale: 1.05 }}
         src={src}
@@ -26,6 +33,6 @@ export default function ParallaxImage({ src, alt, className, aspectRatio = "aspe
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         referrerPolicy="no-referrer"
       />
-    </div>
+    </motion.div>
   );
 }

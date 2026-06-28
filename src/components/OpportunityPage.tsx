@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import ParallaxImage from "./ParallaxImage";
+import { RevealText } from "./Reveal";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
@@ -116,7 +117,8 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
           <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-400">The Property</span>
         </motion.div>
         <motion.h1 {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.1 }} className="text-4xl sm:text-5xl font-serif leading-tight mb-10 max-w-4xl">
-          Authentic Stone Property with Dual Potential.<br className="hidden sm:block" /> Dol, Island of Brač, Croatia
+          <RevealText delay={0.1}>Authentic Stone Property with Dual Potential.</RevealText>
+          <RevealText delay={0.2}>Dol, Island of Brač, Croatia</RevealText>
         </motion.h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-24">
           <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.15 }} className="space-y-6 text-neutral-600 leading-relaxed">
@@ -151,7 +153,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
         </div>
         <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.2 }} className="mb-12 pb-12 border-b border-black/5">
           <span className="text-[10px] uppercase tracking-[0.5em] text-neutral-400">Investment Scenarios</span>
-          <h2 className="text-3xl font-serif mt-3">How You Could Use This Property</h2>
+          <h2 className="text-3xl font-serif mt-3"><RevealText>How You Could Use This Property</RevealText></h2>
         </motion.div>
       </section>
 
@@ -186,7 +188,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
                 <span className="font-serif italic text-3xl text-neutral-300">{opt.number}</span>
                 <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400">{opt.subtitle}</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-serif mb-8 leading-tight">{opt.title}</h2>
+              <h2 className="text-4xl sm:text-5xl font-serif mb-8 leading-tight"><RevealText>{opt.title}</RevealText></h2>
               
               <div className="space-y-8 text-neutral-600 leading-relaxed">
                 <div>
@@ -254,7 +256,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
               <p className="text-sm text-neutral-500 mt-2">Beaches, towns, transport links, and what makes Brač stand out.</p>
             </div>
             <button
-              onClick={() => { onNavigate('location'); window.scrollTo(0, 0); }}
+              onClick={() => { onNavigate('location'); }}
               className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
             >
               View Location <ArrowRight className="w-4 h-4" />
@@ -264,7 +266,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
 
         {/* Final CTA */}
         <motion.section {...fadeIn} className="text-center py-20 border-t border-black/5">
-          <h3 className="text-3xl font-serif mb-8 italic">Ready to take a closer look?</h3>
+          <h3 className="text-3xl font-serif mb-8 italic"><RevealText>Ready to take a closer look?</RevealText></h3>
           <a
             href="https://wa.me/251944825058"
             className="inline-block bg-black text-white px-12 py-5 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105"

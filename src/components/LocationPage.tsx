@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import ParallaxImage from './ParallaxImage';
+import { RevealText } from './Reveal';
 
 const LOCATION_DATA = [
   {
@@ -190,7 +191,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
 
       <div className="flex-1 lg:pl-32">
         <motion.div {...fadeIn} className="mb-20">
-          <h2 className="text-5xl sm:text-7xl font-serif mb-6">The Area</h2>
+          <h2 className="text-5xl sm:text-7xl font-serif mb-6"><RevealText>The Area</RevealText></h2>
           <p className="text-neutral-500 max-w-xl font-light leading-relaxed">
             Dol sits inland on Brač, within easy reach of the coast, beaches, and the island's main towns.
           </p>
@@ -221,7 +222,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
                       />
                     </div>
                     <div className="flex justify-between items-start mb-3">
-                      <h4 className="text-2xl font-serif italic">{item.name}</h4>
+                      <h4 className="text-2xl font-serif italic"><RevealText>{item.name}</RevealText></h4>
                       <span className="text-[10px] uppercase tracking-widest font-bold bg-neutral-100 px-3 py-1.5 rounded-full">{item.distance}</span>
                     </div>
                     <p className="text-neutral-500 text-sm font-light leading-relaxed mb-6">{item.feature}</p>
@@ -255,7 +256,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
               <p className="text-sm text-neutral-500 mt-2">Reach out to arrange a viewing, ask about the renovation process, or request the full property documents.</p>
             </div>
             <button
-              onClick={() => { onNavigate('contact'); window.scrollTo(0, 0); }}
+              onClick={() => { onNavigate('contact'); }}
               className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
             >
               Contact Us <ArrowRight className="w-4 h-4" />

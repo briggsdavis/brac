@@ -62,14 +62,13 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
   const handleNav = (id: string) => {
     onNavigate(id);
     setIsMenuOpen(false);
-    window.scrollTo(0, 0);
   };
 
   return (
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-[70] transition-transform duration-500 ease-in-out bg-white/80 backdrop-blur-md border-b border-black/5",
+          "fixed top-0 left-0 right-0 z-[70] transition-transform duration-500 ease-in-out bg-white border-b border-black/5",
           isVisible || isMenuOpen ? "translate-y-0" : "-translate-y-full"
         )}
       >
