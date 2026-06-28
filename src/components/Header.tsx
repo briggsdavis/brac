@@ -64,6 +64,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     setIsMenuOpen(false);
   };
 
+  // Show the hovered page's image, or fall back to the current page's image
+  // (some pages, e.g. contact, have no preview image).
+  const previewItem = hoveredItem ?? (MENU_IMAGES[currentPage] ? currentPage : null);
+
   return (
     <>
       <header
@@ -155,10 +159,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
 
             <div className="hidden lg:flex flex-1 bg-neutral-50 relative overflow-hidden items-center justify-center">
               <AnimatePresence mode="wait">
-                {hoveredItem && (
+                {previewItem && (
                   <motion.img
-                    key={hoveredItem}
-                    src={MENU_IMAGES[hoveredItem]}
+                    key={previewItem}
+                    src={MENU_IMAGES[previewItem]}
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
@@ -168,7 +172,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                   />
                 )}
               </AnimatePresence>
-              {!hoveredItem && (
+              {!previewItem && (
                 <div className="absolute inset-0 flex items-center justify-center p-12 text-center">
                   <p className="font-serif italic text-neutral-300 text-2xl">Select a destination</p>
                 </div>
