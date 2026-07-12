@@ -35,7 +35,7 @@ const PROPERTY_STATS = [
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [galleryFilter, setGalleryFilter] = useState<'all' | 'render' | 'site'>('all');
+  const [galleryFilter, setGalleryFilter] = useState<'all' | 'site'>('all');
   const wipeControls = useAnimationControls();
   const isTransitioning = useRef(false);
 
@@ -63,7 +63,7 @@ export default function App() {
     runTransition(() => setCurrentPage(page));
   };
 
-  const navigateToGallery = (filter: 'all' | 'render' | 'site' = 'all') => {
+  const navigateToGallery = (filter: 'all' | 'site' = 'all') => {
     if (currentPage === 'gallery') {
       setGalleryFilter(filter);
       scrollToTop();
@@ -113,7 +113,7 @@ export default function App() {
   );
 }
 
-function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filter: 'all' | 'render' | 'site') => void; onNavigate: (page: string) => void }) {
+function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filter: 'all' | 'site') => void; onNavigate: (page: string) => void }) {
   return (
     <>
       {/* Hero Section */}
@@ -250,7 +250,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           <motion.div {...fadeIn}>
             <h2 className="text-5xl font-serif mb-6"><RevealText>The Property</RevealText></h2>
             <p className="text-neutral-500 leading-relaxed mb-8">
-              Site photos of the property as it currently stands, alongside computer-generated 3D renders showing what a renovation <em>could</em> look like — renders do not show the actual property. Beaches and landscapes of Brač are also included.
+              Site photos of the property as it currently stands, alongside beaches and landscapes of Brač.
             </p>
             <button onClick={() => onNavigateToGallery('site')} className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold border-b border-black pb-1 group">
               View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -259,7 +259,7 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.2 }} className="overflow-hidden">
             <ParallaxImage
               src="/images/opportunityhero.jpg"
-              alt="Renovation Render"
+              alt="Brač Property"
               aspectRatio="aspect-[4/3]"
             />
           </motion.div>
@@ -275,15 +275,10 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="masonry-item relative">
             <ParallaxImage
-              src="/renderfront.jpg"
-              alt="Render Front"
+              src="/siteuppergarden.jpg"
+              alt="Upper Garden Site Photo"
               aspectRatio="aspect-square"
             />
-            <div className="absolute top-3 left-3 z-10">
-              <span className="bg-amber-400 text-amber-950 text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 rounded shadow-md">
-                3D Render — Not the property
-              </span>
-            </div>
           </motion.div>
 <motion.div {...fadeIn} transition={{ delay: 0.6 }} className="masonry-item">
             <ParallaxImage
@@ -294,15 +289,10 @@ function Home({ onNavigateToGallery, onNavigate }: { onNavigateToGallery: (filte
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 0.8 }} className="masonry-item relative">
             <ParallaxImage
-              src="/renderkitchen.jpg"
-              alt="Kitchen Render"
+              src="/sitekitchen.jpg"
+              alt="Kitchen Site Photo"
               aspectRatio="aspect-[4/3]"
             />
-            <div className="absolute top-3 left-3 z-10">
-              <span className="bg-amber-400 text-amber-950 text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 rounded shadow-md">
-                3D Render — Not the property
-              </span>
-            </div>
           </motion.div>
           <motion.div {...fadeIn} transition={{ delay: 1.0 }} className="masonry-item">
             <ParallaxImage

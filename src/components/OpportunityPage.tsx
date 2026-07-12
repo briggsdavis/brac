@@ -26,7 +26,7 @@ const OPPORTUNITIES = [
     strategy: "New construction is not permitted in Dol due to its protected village status. This restricts supply and supports resale values for renovated properties. A well-finished stone house in this location is difficult to replicate. Crucially, the upper house doesn't require a gut renovation — the structure is sound. A coat of paint, new furniture, and cosmetic finishing goes a long way. The deeper work sits in the cellar and stable, where the real conversion upside lies.",
     financialUpside: "Unrestored stone properties on Brač typically sell for €150,000–€250,000. Fully restored stone houses in the same area have sold for €600,000 to €1.2M depending on finish and views.",
     target: "Buyers looking to renovate and resell.",
-    image: "/images/renderfront.jpg"
+    image: "/images/potentialdol.jpg"
   },
   {
     id: "digital-nomad",
@@ -224,13 +224,6 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
                   className="w-full transition-all duration-1000"
                 />
                 <div className="absolute inset-0 bg-black/10 transition-colors duration-1000" />
-                {opt.image.includes('render') && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="bg-amber-400 text-amber-950 text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 rounded shadow-md">
-                      3D Render — Not the property
-                    </span>
-                  </div>
-                )}
               </div>
             </motion.div>
           </section>
@@ -267,4 +260,3 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
     </div>
   );
 }
-
