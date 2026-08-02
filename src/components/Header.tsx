@@ -11,6 +11,9 @@ function cn(...inputs: ClassValue[]) {
 interface HeaderProps {
   onNavigate: (page: string) => void;
   currentPage: string;
+  isReady: boolean;
+  isMuted: boolean;
+  onToggleMute: () => void;
 }
 
 const MENU_IMAGES: Record<string, string> = {
@@ -21,21 +24,11 @@ const MENU_IMAGES: Record<string, string> = {
   specifications: "/images/vidovagora.jpg",
 };
 
-export default function Header({ onNavigate, currentPage }: HeaderProps) {
+export default function Header({ onNavigate, currentPage, isReady, isMuted, onToggleMute }: HeaderProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
-
-  const toggleMute = () => {
-    const audio = document.getElementById('bg-audio') as HTMLAudioElement | null;
-    if (audio) {
-      audio.muted = !audio.muted;
-      setIsMuted(audio.muted);
-    }
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -75,8 +68,8 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-[70] transition-transform duration-500 ease-in-out bg-white border-b border-black/5",
-          isVisible || isMenuOpen ? "translate-y-0" : "-translate-y-full"
+          "fixed top-0 left-0 right-0 z-[70] transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] bg-white border-b border-black/5",
+          isReady && (isVisible || isMenuOpen) ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -101,7 +94,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
 
           <div className="flex items-center gap-3 z-[80]">
             <button
-              onClick={toggleMute}
+              onClick={onToggleMute}
               aria-label={isMuted ? 'Unmute' : 'Mute'}
               className="hover:scale-110 transition-transform"
             >
