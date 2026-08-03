@@ -219,7 +219,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
                       href={item.maps}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] font-bold border-b border-black pb-1 hover:opacity-50 transition-all"
+                      className="map-link inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] font-bold pb-1"
                     >
                       View on Maps <ExternalLink className="w-3 h-3" />
                     </a>
@@ -246,7 +246,7 @@ export default function LocationPage({ onNavigate }: { onNavigate?: (page: strin
             </div>
             <button
               onClick={() => { onNavigate('contact'); }}
-              className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
+              className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all flex-shrink-0"
             >
               Contact Us <ArrowRight className="w-4 h-4" />
             </button>

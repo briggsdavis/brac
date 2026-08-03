@@ -23,9 +23,14 @@ export default function ParallaxImage({ src, alt, className, aspectRatio = "aspe
   return (
     <motion.div
       ref={ref}
-      initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-      animate={{ clipPath: inView ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)" }}
-      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      data-parallax-image
+      initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0, y: 32 }}
+      animate={{
+        clipPath: inView ? "inset(0% 0% 0% 0%)" : "inset(100% 0% 0% 0%)",
+        opacity: inView ? 1 : 0,
+        y: inView ? 0 : 32,
+      }}
+      transition={{ duration: 1.8144, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
       className={`relative overflow-hidden group ${aspectRatio} ${className}`}
     >
       <motion.img

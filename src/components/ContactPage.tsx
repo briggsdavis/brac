@@ -44,7 +44,7 @@ export default function ContactPage() {
           <div className="space-y-6 w-full max-w-md">
             <a 
               href="https://wa.me/251944825058" 
-              className="flex items-center justify-center gap-3 bg-black text-white py-5 px-4 rounded-xl text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="flex items-center justify-center gap-3 bg-black text-white py-5 px-4 rounded-xl text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all active:scale-[0.98]"
             >
               <MessageCircle className="w-5 h-5 flex-shrink-0" />
               <span className="truncate">WhatsApp: +251 944 825 058</span>

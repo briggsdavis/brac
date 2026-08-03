@@ -239,7 +239,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
             </div>
             <button
               onClick={() => { onNavigate('location'); }}
-              className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
+              className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all flex-shrink-0"
             >
               View Location <ArrowRight className="w-4 h-4" />
             </button>
@@ -251,7 +251,7 @@ export default function OpportunityPage({ onNavigate }: { onNavigate?: (page: st
           <h3 className="text-3xl font-serif mb-8 italic"><RevealText>Ready to take a closer look?</RevealText></h3>
           <a
             href="https://wa.me/251944825058"
-            className="inline-block bg-black text-white px-12 py-5 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105"
+            className="inline-block bg-black text-white px-12 py-5 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all"
           >
             Request Full Investment Pack
           </a>

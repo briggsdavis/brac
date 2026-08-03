@@ -448,7 +448,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
           href="https://wa.me/251944825058?text=Hi%2C%20I%27d%20like%20to%20request%20the%20floor%20plan%20for%20the%20Bra%C4%8D%20Estate."
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 rounded-xl flex-shrink-0"
+          className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all flex-shrink-0"
         >
           <Download className="w-4 h-4" />
           Request Floor Plan
@@ -465,7 +465,7 @@ export default function SpecificationsPage({ onNavigate }: { onNavigate?: (page:
           </div>
           <button
             onClick={() => { onNavigate('opportunity'); }}
-            className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all hover:scale-105 flex-shrink-0"
+            className="flex items-center gap-3 bg-black text-white px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all flex-shrink-0"
           >
             View Opportunities <ArrowRight className="w-4 h-4" />
           </button>

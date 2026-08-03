@@ -20,12 +20,15 @@ export function RevealText({ children, delay = 0, className }: RevealTextProps) 
   // so the animation plays where it can actually be seen rather than off-screen.
   const inView = useInView(ref, { once: true, margin: '0px 0px -30% 0px' });
   return (
-    <span ref={ref} className={`block overflow-hidden ${className ?? ''}`}>
+    <span ref={ref} data-reveal-text className={`block overflow-hidden ${className ?? ''}`}>
       <motion.span
         className="block"
-        initial={{ y: '115%' }}
-        animate={{ y: inView ? '0%' : '115%' }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay }}
+        initial={{ y: '115%', clipPath: 'inset(0% 100% 0% 0%)' }}
+        animate={{
+          y: inView ? '0%' : '115%',
+          clipPath: inView ? 'inset(0% 0% 0% 0%)' : 'inset(0% 100% 0% 0%)',
+        }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: delay + 0.12 }}
       >
         {children}
       </motion.span>

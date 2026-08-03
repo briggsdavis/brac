@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Header from './components/Header';
 import GalleryPage from './components/GalleryPage';
 import LocationPage from './components/LocationPage';
@@ -9,9 +9,7 @@ import ParallaxImage from './components/ParallaxImage';
 import { RevealText } from './components/Reveal';
 import { initSmoothScroll, scrollToTop, scrollToElement } from './lib/scroll';
 import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bed, Landmark, Leaf } from 'lucide-react';
-import { AnimatePresence, motion, useAnimationControls } from 'motion/react';
-
-const WIPE_EASE = [0.76, 0, 0.24, 1] as const;
+import { AnimatePresence, motion, useAnimationControls, useScroll, useTransform } from 'motion/react';
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -38,17 +36,48 @@ export default function App() {
   const [galleryFilter, setGalleryFilter] = useState<'all' | 'site'>('all');
   const [introComplete, setIntroComplete] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const wipeControls = useAnimationControls();
-  const isTransitioning = useRef(false);
-
   useEffect(() => initSmoothScroll(), []);
 
-  useEffect(() => {
-    const bodyCopy = Array.from(
-      document.querySelectorAll<HTMLElement>('main p:not([data-no-blur-reveal]), footer p')
-    );
+  useLayoutEffect(() => {
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>([
+      'main p:not([data-no-blur-reveal])',
+      'footer p',
+      'main button',
+      'footer button',
+      'main a',
+      'footer a',
+      'main h1',
+      'main h2',
+      'main h3',
+      'main h4',
+      'footer h1',
+      'footer h2',
+      'footer h3',
+      'footer h4',
+      'main span.uppercase',
+      'footer span.uppercase',
+      'main img',
+    ].join(', '))).filter((element) => !element.closest('[data-no-global-reveal]'));
 
-    bodyCopy.forEach((element) => element.classList.add('body-copy-reveal'));
+    revealElements.forEach((element) => {
+      const tagName = element.tagName;
+      const isImage = tagName === 'IMG';
+      const isHeading = /^H[1-4]$/.test(tagName);
+      const isSubheading = element.matches('span.uppercase') || (tagName === 'P' && element.classList.contains('uppercase'));
+
+      if (isImage && element.closest('[data-parallax-image]')) return;
+      if (isHeading && element.querySelector('[data-reveal-text]')) return;
+
+      element.classList.add(
+        isImage ? 'viewport-image-reveal' : isHeading || isSubheading ? 'viewport-rise-reveal' : 'viewport-blur-reveal'
+      );
+    });
+
+    const observedElements = revealElements.filter((element) =>
+      element.classList.contains('viewport-image-reveal') ||
+      element.classList.contains('viewport-rise-reveal') ||
+      element.classList.contains('viewport-blur-reveal')
+    );
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,11 +90,9 @@ export default function App() {
       { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
     );
 
-    // On internal page changes, let the white transition curtain begin moving
-    // before body copy reveals so the blur-in remains visible to the visitor.
-    const startDelay = currentPage === 'home' ? 0 : 450;
+    const startDelay = currentPage === 'home' ? 0 : 120;
     const timer = window.setTimeout(() => {
-      bodyCopy.forEach((element) => observer.observe(element));
+      observedElements.forEach((element) => observer.observe(element));
     }, startDelay);
 
     return () => {
@@ -97,26 +124,13 @@ export default function App() {
     if (!nextMuted) void audio.play().catch(() => setIsMuted(true));
   };
 
-  // White panel wipes up to cover the screen (favicon centred), holds briefly,
-  // then wipes up again off the top to reveal the freshly-swapped page.
-  const runTransition = async (apply: () => void) => {
-    if (isTransitioning.current) return;
-    isTransitioning.current = true;
-    await wipeControls.start({ y: '0%', transition: { duration: 0.5, ease: WIPE_EASE } });
-    apply();
-    scrollToTop(true);
-    await new Promise((resolve) => setTimeout(resolve, 450));
-    await wipeControls.start({ y: '-100%', transition: { duration: 0.55, ease: WIPE_EASE } });
-    wipeControls.set({ y: '100%' });
-    isTransitioning.current = false;
-  };
-
   const navigate = (page: string) => {
     if (page === currentPage) {
       scrollToTop();
       return;
     }
-    runTransition(() => setCurrentPage(page));
+    setCurrentPage(page);
+    scrollToTop(true);
   };
 
   const navigateToGallery = (filter: 'all' | 'site' = 'all') => {
@@ -125,10 +139,9 @@ export default function App() {
       scrollToTop();
       return;
     }
-    runTransition(() => {
-      setGalleryFilter(filter);
-      setCurrentPage('gallery');
-    });
+    setGalleryFilter(filter);
+    setCurrentPage('gallery');
+    scrollToTop(true);
   };
 
   const renderPage = () => {
@@ -144,6 +157,7 @@ export default function App() {
           onNavigate={navigate}
           onAudioChoice={chooseAudio}
           onIntroComplete={() => setIntroComplete(true)}
+          hasEntered={introComplete}
         />
       );
     }
@@ -158,26 +172,16 @@ export default function App() {
         isMuted={isMuted}
         onToggleMute={toggleMute}
       />
-      <main>
-        {renderPage()}
-      </main>
-      <motion.div {...fadeIn}>
-        <Footer onNavigate={navigate} />
-      </motion.div>
-
-      {/* Page transition curtain — wipes up to cover, then up again to reveal */}
-      <motion.div
-        initial={{ y: '100%' }}
-        animate={wipeControls}
-        className="fixed inset-0 z-[100] bg-white flex items-center justify-center"
-        style={{ willChange: 'transform' }}
+      <motion.main
+        key={currentPage}
+        initial={introComplete ? { opacity: 0, filter: 'blur(14px)' } : false}
+        animate={introComplete ? { opacity: 1, filter: 'blur(0px)' } : { opacity: 1 }}
+        transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+        style={introComplete ? { willChange: 'opacity, filter' } : undefined}
       >
-        <img
-          src="/images/bracfav.jpg"
-          alt="Brač Estate"
-          className="w-40 h-40 object-contain"
-        />
-      </motion.div>
+        {renderPage()}
+      </motion.main>
+      <Footer onNavigate={navigate} />
     </div>
   );
 }
@@ -187,6 +191,7 @@ interface HomeProps {
   onNavigate: (page: string) => void;
   onAudioChoice: (withAudio: boolean) => void;
   onIntroComplete: () => void;
+  hasEntered: boolean;
 }
 
 const INTRO_EASE = [0.22, 1, 0.36, 1] as const;
@@ -194,12 +199,23 @@ const heroButtonVariants = {
   hidden: { opacity: 0, y: 18, filter: 'blur(16px)' },
   visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.68, ease: INTRO_EASE } },
 };
+const entryItemVariants = {
+  hidden: { opacity: 0, y: 10, filter: 'blur(14px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.72, ease: INTRO_EASE } },
+};
 
-function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete }: HomeProps) {
-  const [entryDismissed, setEntryDismissed] = useState(false);
+function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete, hasEntered }: HomeProps) {
+  const [entryDismissed, setEntryDismissed] = useState(hasEntered);
   const isEntering = useRef(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroImageY = useTransform(heroScrollProgress, [0, 1], [0, -80]);
   const entryControls = useAnimationControls();
   const imageControls = useAnimationControls();
+  const heroBlurControls = useAnimationControls();
   const copyControls = useAnimationControls();
   const buttonControls = useAnimationControls();
 
@@ -217,44 +233,65 @@ function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete 
       opacity: 1,
       transition: { duration: 1.05, ease: INTRO_EASE },
     });
-    await new Promise((resolve) => window.setTimeout(resolve, 850));
+    await new Promise((resolve) => window.setTimeout(resolve, 106.25));
     await imageControls.start({
       width: '100vw',
       height: '100vh',
       borderRadius: 0,
       transition: { duration: 1.15, ease: INTRO_EASE },
     });
+    const blurReveal = heroBlurControls.start({
+      opacity: 1,
+      transition: { duration: 0.945, ease: INTRO_EASE },
+    });
+    await new Promise((resolve) => window.setTimeout(resolve, 472.5));
     await copyControls.start({
       opacity: 1,
       y: 0,
       filter: 'blur(0px)',
-      transition: { duration: 0.62, ease: INTRO_EASE },
+      clipPath: 'inset(0% 0% 0% 0%)',
+      transition: { duration: 0.434, ease: INTRO_EASE },
     });
-    await buttonControls.start('visible');
+    await blurReveal;
     onIntroComplete();
+    await buttonControls.start('visible');
   };
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden bg-white">
+      <section ref={heroRef} data-no-global-reveal className="relative h-screen w-full overflow-hidden bg-white">
         <motion.div
-          initial={{ width: 0, height: 0, opacity: 0, borderRadius: 4 }}
+          initial={hasEntered
+            ? { width: '100vw', height: '100vh', opacity: 1, borderRadius: 0 }
+            : { width: 0, height: 0, opacity: 0, borderRadius: 4 }}
           animate={imageControls}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden"
           style={{ willChange: 'width, height, opacity' }}
         >
-          <img
+          <motion.img
             src="/images/brachero.jpg"
             alt="Brač Estate Hero"
             className="h-full w-full object-cover"
+            style={{ y: heroImageY, scale: 1.15 }}
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 35%, transparent 60%)' }} />
+          <motion.div
+            initial={{ opacity: hasEntered ? 1 : 0 }}
+            animate={heroBlurControls}
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-white/[0.01] backdrop-blur-[5px]"
+            style={{
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 55%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 55%, black 100%)',
+            }}
+          />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 18, filter: 'blur(14px)' }}
+          initial={hasEntered
+            ? { opacity: 1, y: 0, filter: 'blur(0px)', clipPath: 'inset(0% 0% 0% 0%)' }
+            : { opacity: 0, y: 18, filter: 'blur(14px)', clipPath: 'inset(0% 100% 0% 0%)' }}
           animate={copyControls}
           className="absolute inset-0 flex flex-col items-center justify-end text-white text-center px-6 pb-20"
         >
@@ -264,9 +301,9 @@ function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete 
             <span className="block">Stone Estate</span>
           </h1>
           <motion.div
-            initial="hidden"
+            initial={hasEntered ? "visible" : "hidden"}
             animate={buttonControls}
-            variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
+            variants={{ visible: { transition: { staggerChildren: 0.21 } } }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <motion.button
@@ -285,10 +322,6 @@ function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete 
             </motion.button>
           </motion.div>
         </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={buttonControls} variants={{ visible: { opacity: 1, transition: { delay: 0.7 } } }} className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-px h-12 bg-white/50"></div>
-        </motion.div>
-
         <AnimatePresence>
           {!entryDismissed && (
             <motion.div
@@ -296,22 +329,31 @@ function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete 
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[90] flex flex-col items-center justify-center bg-white px-6 text-center"
             >
-              <p data-no-blur-reveal className="mb-5 text-[10px] uppercase tracking-[0.5em] text-neutral-400">Brač, Croatia</p>
-              <h1 className="mb-12 font-serif text-4xl tracking-[0.08em] sm:text-5xl">Brač Estate</h1>
-              <div className="flex w-full max-w-xs flex-col gap-3">
-                <button
-                  onClick={() => void beginHeroSequence(true)}
-                  className="border border-black bg-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.28em] text-white transition-colors hover:bg-neutral-800"
-                >
-                  Enter with audio
-                </button>
-                <button
-                  onClick={() => void beginHeroSequence(false)}
-                  className="border border-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.28em] text-black transition-colors hover:bg-neutral-50"
-                >
-                  Enter without audio
-                </button>
-              </div>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{ visible: { transition: { delayChildren: 0.35, staggerChildren: 0.14 } } }}
+                className="flex w-full flex-col items-center"
+              >
+                <motion.p variants={entryItemVariants} data-no-blur-reveal className="mb-5 text-[10px] uppercase tracking-[0.5em] text-neutral-400">Brač, Croatia</motion.p>
+                <motion.h1 variants={entryItemVariants} className="mb-12 font-serif text-4xl tracking-[0.08em] sm:text-5xl">Brač Estate</motion.h1>
+                <div className="flex w-full max-w-xs flex-col gap-3">
+                  <motion.button
+                    variants={entryItemVariants}
+                    onClick={() => void beginHeroSequence(true)}
+                    className="border border-black bg-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.28em] text-white transition-colors hover:bg-neutral-800"
+                  >
+                    Enter with audio
+                  </motion.button>
+                  <motion.button
+                    variants={entryItemVariants}
+                    onClick={() => void beginHeroSequence(false)}
+                    className="border border-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.28em] text-black transition-colors hover:bg-neutral-50"
+                  >
+                    Enter without audio
+                  </motion.button>
+                </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -365,9 +407,13 @@ function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete 
               <motion.div
                 key={i}
                 {...fadeIn}
-                transition={{ ...fadeIn.transition, delay: i * 0.1 }}
-                whileHover={{ y: -10, backgroundColor: '#fff' }}
-                className="p-8 border border-black/5 rounded-2xl transition-all duration-500 group flex flex-col items-center text-center"
+                transition={{ ...fadeIn.transition, delay: i * 0.03 }}
+                whileHover={{
+                  y: -10,
+                  backgroundColor: '#fff',
+                  transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+                }}
+                className="p-8 border border-black/5 rounded-2xl transition-colors duration-200 group flex flex-col items-center text-center"
               >
                 <stat.icon className="w-6 h-6 mb-6 text-neutral-400 group-hover:text-black transition-colors" />
                 <p className="text-[10px] uppercase tracking-widest text-neutral-400 mb-2">{stat.label}</p>
@@ -477,9 +523,17 @@ function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete 
 }
 
 function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
+  const footerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ['start end', 'end end'],
+  });
+  const footerY = useTransform(scrollYProgress, [0, 1], [126, 0]);
+
   return (
-    <footer className="bg-neutral-50 py-20 px-6 border-t border-black/5">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer ref={footerRef} className="bg-neutral-50 py-20 px-6 border-t border-black/5 overflow-hidden">
+      <motion.div style={{ y: footerY }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         <div className="col-span-1 md:col-span-2">
           <h2 className="text-2xl font-serif tracking-[0.3em] uppercase mb-6"><RevealText>Brač Estate</RevealText></h2>
           <p className="text-neutral-500 text-sm max-w-xs">
@@ -497,20 +551,21 @@ function Footer({ onNavigate }: { onNavigate: (p: string) => void }) {
             <li><button onClick={() => onNavigate('contact')} className="hover:text-black hover:translate-x-1 transition-all">Contact</button></li>
           </ul>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-[10px] uppercase tracking-widest text-neutral-400">© 2026 Brač Investment Estate. All rights reserved.</p>
+        </div>
+        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p className="text-[10px] uppercase tracking-widest text-neutral-400">Copyright © 2026 Brač Estate. All rights reserved.</p>
         <div className="flex items-center gap-8">
           <a 
             href="https://briggsdavis.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-[10px] uppercase tracking-widest text-neutral-400 hover:text-black transition-colors"
+            className="footer-credit-link text-[10px] uppercase tracking-widest text-neutral-400 hover:text-black transition-colors duration-500"
           >
             Made by BriggsDavis
           </a>
         </div>
-      </div>
+        </div>
+      </motion.div>
     </footer>
   );
 }

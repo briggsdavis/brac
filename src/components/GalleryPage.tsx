@@ -60,16 +60,21 @@ export default function GalleryPage({ initialFilter = "all" }: { initialFilter?:
         </div>
       </motion.div>
 
-      <div className="masonry-grid masonry-grid-4">
+      <div className="masonry-grid masonry-grid-3">
         {filteredImages.map((img, i) => (
           <motion.div 
             key={img.src} 
             layout
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, boxShadow: '0 18px 45px rgba(26, 26, 26, 0)' }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="masonry-item group cursor-pointer overflow-hidden bg-neutral-100 relative"
+            whileInView={{ boxShadow: '0 18px 45px rgba(26, 26, 26, 0.12)' }}
+            viewport={{ once: true, margin: '0px 0px -30% 0px' }}
+            transition={{
+              duration: 0.5,
+              boxShadow: { duration: 0.65, delay: 1.94, ease: [0.22, 1, 0.36, 1] },
+            }}
+            className="masonry-item group cursor-pointer overflow-hidden relative"
             onClick={() => setIndex(IMAGES.indexOf(img))}
           >
             <ParallaxImage
