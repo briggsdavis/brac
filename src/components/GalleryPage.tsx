@@ -3,25 +3,67 @@ import "yet-another-react-lightbox/styles.css";
 import { useState } from "react";
 import { motion } from "motion/react";
 import ParallaxImage from "./ParallaxImage";
+import PropertyVideo from "./PropertyVideo";
 import { RevealText } from "./Reveal";
 
-const IMAGES = [
-  { src: "/sitekitchen.jpg", alt: "Kitchen Site Photo", category: "site" },
-  { src: "/sitekitechenpt2.jpg", alt: "Kitchen Site Photo Two", category: "site" },
-  { src: "/sitebedroom.jpg", alt: "Bedroom Site Photo", category: "site" },
-  { src: "/sitebathroom.jpg", alt: "Bathroom Site Photo", category: "site" },
-  { src: "/siteliving.jpg", alt: "Living Room Site Photo", category: "site" },
-  { src: "/sitelivingtwo.jpg", alt: "Living Room Site Photo Two", category: "site" },
-  { src: "/sitestable.jpg", alt: "Stable Site Photo", category: "site" },
-  { src: "/sitestableone.jpg", alt: "Stable Site Photo One", category: "site" },
-  { src: "/sitestabletwo.jpg", alt: "Stable Site Photo Two", category: "site" },
-  { src: "/siteterrace.jpg", alt: "Terrace Site Photo", category: "site" },
-  { src: "/sitelowergarden.jpg", alt: "Lower Garden Site Photo", category: "site" },
-  { src: "/sitelowergardenone.jpg", alt: "Lower Garden Site Photo One", category: "site" },
-  { src: "/siteuppergarden.jpg", alt: "Upper Garden Site Photo", category: "site" },
-  { src: "/siteuppergardentwo.jpg", alt: "Upper Garden Site Photo Two", category: "site" },
-  { src: "/siteroad.jpg", alt: "Road Site Photo", category: "site" },
+const IMAGE_FILES = [
+  "IMG_8289.jpg",
+  "IMG_8290.jpg",
+  "IMG_8291.jpg",
+  "IMG_8292.jpg",
+  "IMG_8293.jpg",
+  "IMG_8294.jpg",
+  "IMG_8295.jpg",
+  "IMG_8296.jpg",
+  "IMG_8297.jpg",
+  "IMG_8298.jpg",
+  "IMG_8299.jpg",
+  "IMG_8300.jpg",
+  "IMG_8302.jpg",
+  "IMG_8303.jpg",
+  "IMG_8304.jpg",
+  "IMG_8305.jpg",
+  "IMG_8306.jpg",
+  "IMG_8307.jpg",
+  "IMG_8308.jpg",
+  "IMG_8309.jpg",
+  "IMG_8311.jpg",
+  "IMG_8312.jpg",
+  "IMG_8313.jpg",
+  "IMG_8314.jpg",
+  "IMG_8315.jpg",
+  "IMG_8316.jpg",
+  "IMG_8317.jpg",
+  "IMG_8318.jpg",
+  "IMG_8319.jpg",
+  "IMG_8320.jpg",
+  "IMG_8321.jpg",
+  "IMG_8322.jpg",
+  "IMG_8324.jpg",
+  "IMG_8325.jpg",
+  "IMG_8326.jpg",
+  "IMG_8327.jpg",
+  "IMG_8328.jpg",
+  "IMG_8329.jpg",
+  "IMG_8331.jpg",
+  "IMG_8332.jpg",
+  "IMG_8333.jpg",
+  "IMG_8334.jpg",
+  "IMG_8335.jpg",
+  "IMG_8336.jpg",
+  "IMG_8337.jpg",
+  "IMG_8338.jpg",
+  "IMG_8339.jpg",
+  "IMG_8340.jpg",
+  "IMG_8341.jpg",
+  "IMG_8344.jpg",
 ];
+
+const IMAGES = IMAGE_FILES.map((filename, index) => ({
+  src: `/gallery/${filename}`,
+  alt: `Property gallery photo ${index + 1}`,
+  category: "site",
+}));
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -59,6 +101,8 @@ export default function GalleryPage({ initialFilter = "all" }: { initialFilter?:
           ))}
         </div>
       </motion.div>
+
+      <PropertyVideo className="mb-20" />
 
       <div className="masonry-grid masonry-grid-3">
         {filteredImages.map((img, i) => (

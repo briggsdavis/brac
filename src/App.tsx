@@ -6,6 +6,7 @@ import OpportunityPage from './components/OpportunityPage';
 import ContactPage from './components/ContactPage';
 import SpecificationsPage from './components/SpecificationsPage';
 import ParallaxImage from './components/ParallaxImage';
+import PropertyVideo from './components/PropertyVideo';
 import { RevealText } from './components/Reveal';
 import { initSmoothScroll, scrollToTop, scrollToElement } from './lib/scroll';
 import { ArrowRight, Maximize, Trees, Waves, Mountain, Sun, Car, Bed, Landmark, Leaf } from 'lucide-react';
@@ -357,6 +358,11 @@ function Home({ onNavigateToGallery, onNavigate, onAudioChoice, onIntroComplete,
             </motion.div>
           )}
         </AnimatePresence>
+      </section>
+
+      {/* Property Video */}
+      <section className="border-b border-black/5 px-6 py-20 sm:py-24">
+        <PropertyVideo />
       </section>
 
       {/* Quick Specs */}
